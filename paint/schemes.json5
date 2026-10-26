@@ -1,0 +1,26 @@
+// Skittles Paint schemes: the single source of truth.
+// scripts/build-schemes.mjs writes paint/css/skittles-paint.css: the @color-schemes
+// manifest (color-scheme 0.4.0), one token block per scheme, then
+// paint/css/skittles-paint.rules.css. "light" and "dark" are required ids: they are
+// the :root and html.dark-theme blocks and the default slot schemes.
+//
+// hue: the Skittles flavor's HSL hue (dominant color). linkHue: the link color hue,
+// chosen to contrast with the dominant-colored borders. slots: [light] | [dark] | [] (none: off-slot only).
+// Classic (original) Skittles: Strawberry, Orange, Lemon, Green Apple (Lime before
+// 2013 and again from 2021) and Grape.
+{
+  schemes: [
+    { id: "light", label: "Strawberry (light)", flavor: "strawberry", hue: 350, linkHue: 222, slots: ["light"] },
+    { id: "strawberrydark", label: "Strawberry (dark)", flavor: "strawberry", hue: 350, linkHue: 195, slots: ["dark"] },
+    { id: "orangelight", label: "Orange (light)", flavor: "orange", hue: 26, linkHue: 228, slots: ["light"] },
+    { id: "orangedark", label: "Orange (dark)", flavor: "orange", hue: 26, linkHue: 200, slots: ["dark"] },
+    { id: "lemonlight", label: "Lemon (light)", flavor: "lemon", hue: 50, linkHue: 262, slots: ["light"] },
+    { id: "lemondark", label: "Lemon (dark)", flavor: "lemon", hue: 52, linkHue: 290, slots: ["dark"] },
+    { id: "greenlight", label: "Green Apple (light)", flavor: "green", hue: 128, linkHue: 318, slots: ["light"] },
+    { id: "greendark", label: "Green Apple (dark)", flavor: "green", hue: 128, linkHue: 318, slots: ["dark"] },
+    { id: "grapelight", label: "Grape (light)", flavor: "grape", hue: 280, linkHue: 165, slots: ["light"] },
+    { id: "dark", label: "Grape (dark)", flavor: "grape", hue: 280, linkHue: 80, slots: ["dark"] },
+    // Off-slot special: bright purple page, never picked by light/dark automation.
+    { id: "grapesoda", label: "Grape Soda (special)", flavor: "grape", hue: 276, linkHue: 185, slots: [], base: "light", special: true },
+  ],
+}

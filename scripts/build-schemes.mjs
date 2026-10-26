@@ -1,0 +1,150 @@
+#!/usr/bin/env node
+// Thresholds carry headroom over WCAG (4.5 text): the layout tints admonition and
+// callout backgrounds a few percent toward the mark color, which these surfaces omit.
+// Generate one token-only CSS file per Skittles scheme from paint/schemes.json5.
+// Each color is solved for contrast (paint/lib/contrast.js): text 4.5:1 (WCAG AA),
+// borders 3:1 (WCAG 1.4.11) against every surface they sit on.
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { createRequire } from 'node:module'
+
+const require = createRequire(import.meta.url)
+const JSON5 = require('json5')
+const { hslToHex: hsl, solve, contrast } = require('../paint/lib/contrast.js')
+const root = new URL('../paint/', import.meta.url)
+const spec = JSON5.parse(readFileSync(new URL('schemes.json5', root), 'utf8'))
+
+export function tokens (s) {
+  const h = s.hue
+  const mode = s.special ? 'special' : s.slots[0]
+  let t
+  if (mode === 'light') {
+    const canvas = hsl(h, 100, 96)
+    const elevated = '#ffffff'
+    const panel = hsl(h, 100, 91)
+    const bgs = [canvas, elevated, panel]
+    t = {
+      canvas, elevated, panel,
+      ink: hsl(h, 70, 7),
+      heading: hsl(h, 90, 5),
+      inkMuted: solve(h, 55, 35, -1, bgs, 5.4),
+      border: solve(h, 100, 50, -1, bgs, 3.1),
+      link: solve(s.linkHue, 100, 45, -1, bgs, 5.4),
+      dominant: hsl(h, 100, h > 40 && h < 70 ? 52 : 50),
+      outline: hsl(h, 80, 8),
+      hover: hsl(h, 100, 86),
+    }
+    t.linkHover = solve(s.linkHue, 100, 30, -1, bgs, 7)
+  } else if (mode === 'dark') {
+    const canvas = hsl(h, 60, 6)
+    const elevated = hsl(h, 55, 11)
+    const panel = hsl(h, 55, 9)
+    const bgs = [canvas, elevated, panel]
+    t = {
+      canvas, elevated, panel,
+      ink: hsl(h, 100, 96),
+      heading: '#ffffff',
+      inkMuted: solve(h, 70, 70, 1, bgs, 5.6),
+      border: solve(h, 100, 50, 1, bgs, 3.1),
+      link: solve(s.linkHue, 100, 55, 1, bgs, 6.4),
+      dominant: hsl(h, 100, h > 250 ? 62 : 52),
+      outline: '#ffffff',
+      hover: hsl(h, 60, 18),
+    }
+    t.linkHover = solve(s.linkHue, 100, 70, 1, bgs, 8)
+  } else {
+    // Grape Soda: bright purple page, white text, lemon borders, cyan links.
+    const canvas = hsl(h, 100, 46)
+    const elevated = hsl(h, 90, 34)
+    const panel = hsl(h, 95, 40)
+    const bgs = [canvas, elevated, panel]
+    t = {
+      canvas, elevated, panel,
+      ink: '#ffffff',
+      heading: '#ffffff',
+      inkMuted: solve(h, 100, 88, 1, bgs, 5.6),
+      border: solve(54, 100, 55, 1, bgs, 3.1),
+      link: solve(s.linkHue, 100, 60, 1, bgs, 4.8),
+      dominant: hsl(h + 10, 100, 72),
+      outline: '#ffffff',
+      hover: hsl(h, 90, 28),
+    }
+    t.linkHover = solve(s.linkHue, 100, 75, 1, bgs, 6)
+  }
+  // Code panels are near-black in every scheme so the rainbow syntax colors stay vivid.
+  t.codeBg = hsl(h, 50, 5)
+  t.codeFg = '#f5f5f5'
+  t.inlineCodeBg = mode === 'light' ? hsl(h, 100, 93) : t.elevated
+  t.inlineCodeFg = mode === 'light' ? solve(h, 100, 30, -1, [hsl(h, 100, 93)], 5) : t.ink
+  t.accentSoft = `color-mix(in srgb, ${t.link} 16%, transparent)`
+  t.navbarInk = t.ink
+  t.mode = mode
+  return t
+}
+
+export function selector (s) {
+  if (s.id === 'light') return ':root'
+  if (s.id === 'dark') return 'html.dark-theme'
+  if (s.special) return `html[data-scheme="${s.id}"],\nhtml.dark-theme[data-scheme="${s.id}"]`
+  return s.slots[0] === 'dark' ? `html.dark-theme[data-scheme="${s.id}"]` : `html[data-scheme="${s.id}"]`
+}
+
+function block (s, t) {
+  return `/* ${s.label} */
+${selector(s)} {
+  color-scheme: ${t.mode === 'light' ? 'light' : 'dark'};
+  --sk-dominant: ${t.dominant};
+  --sk-outline: ${t.outline};
+  --sk-canvas: ${t.canvas};
+  --sk-elevated: ${t.elevated};
+  --sk-panel: ${t.panel};
+  --sk-ink: ${t.ink};
+  --sk-heading: ${t.heading};
+  --sk-ink-muted: ${t.inkMuted};
+  --sk-border: ${t.border};
+  --sk-link: ${t.link};
+  --sk-link-hover: ${t.linkHover};
+  --sk-hover: ${t.hover};
+  --sk-code-bg: ${t.codeBg};
+  --sk-code-fg: ${t.codeFg};
+  --sk-inline-code-bg: ${t.inlineCodeBg};
+  --sk-inline-code-fg: ${t.inlineCodeFg};
+  --cs-accent-soft: ${t.accentSoft};
+}
+`
+}
+
+export function build () {
+  const manifest = {}
+  const blocks = []
+  const out = []
+  for (const s of spec.schemes) {
+    const t = tokens(s)
+    const e = { label: s.label }
+    if (!['light', 'dark'].includes(s.id)) e.slots = s.slots
+    if (s.base) e.base = s.base
+    manifest[s.id] = e
+    blocks.push(block(s, t))
+    out.push({ id: s.id, label: s.label, flavor: s.flavor, slots: s.slots, base: s.base || s.slots[0] || 'light', selector: selector(s), tokens: t })
+  }
+  const rules = readFileSync(new URL('css/skittles-paint.rules.css', root), 'utf8')
+  const css = `/* @color-schemes
+{
+${Object.entries(manifest).map(([id, e]) => `  ${JSON.stringify(id)}: ${JSON.stringify(e)}`).join(',\n')}
+}
+*/
+/* Skittles Paint. GENERATED by scripts/build-schemes.mjs from paint/schemes.json5
+   and paint/css/skittles-paint.rules.css; edit those, then run pnpm paint:schemes. */
+${blocks.join('\n')}
+${rules}`
+  writeFileSync(new URL('css/skittles-paint.css', root), css)
+  writeFileSync(new URL('schemes.generated.json', root), JSON.stringify(out, null, 2) + '\n')
+  return out
+}
+
+if (process.argv[1]?.endsWith('build-schemes.mjs')) {
+  for (const s of build()) {
+    const t = s.tokens
+    const worst = (fg) => Math.min(...[t.canvas, t.elevated, t.panel].map((b) => contrast(fg, b))).toFixed(2)
+    console.log(`${s.id.padEnd(16)} ink ${worst(t.ink)} muted ${worst(t.inkMuted)} link ${worst(t.link)} border ${worst(t.border)}  ${t.border} ${t.link}`)
+  }
+}

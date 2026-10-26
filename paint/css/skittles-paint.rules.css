@@ -1,0 +1,208 @@
+/* ---- Shared tokens (every scheme) ------------------------------------------
+   Classic Skittles rainbow: decorative only (strips, nav divider, TOC wires);
+   it never carries text, so it has no contrast requirement. */
+:root {
+  --sk-strawberry: #e4002b;
+  --sk-orange: #ff7a00;
+  --sk-lemon: #ffd500;
+  --sk-green: #2fbf3a;
+  --sk-grape: #8a2be2;
+  --sk-rainbow-stops: var(--sk-strawberry) 0 20%, var(--sk-orange) 20% 40%, var(--sk-lemon) 40% 60%, var(--sk-green) 60% 80%, var(--sk-grape) 80% 100%;
+  --sk-rainbow: linear-gradient(90deg, var(--sk-rainbow-stops));
+  --sk-rainbow-v: linear-gradient(180deg, var(--sk-rainbow-stops));
+  --sk-rainbow-smooth: linear-gradient(180deg, var(--sk-strawberry), var(--sk-orange), var(--sk-lemon), var(--sk-green), var(--sk-grape));
+
+  /* --cs-* contract from the per-scheme --sk-* tokens */
+  --cs-canvas: var(--sk-canvas);
+  --cs-elevated: var(--sk-elevated);
+  --cs-ink: var(--sk-ink);
+  --cs-ink-muted: var(--sk-ink-muted);
+  --cs-border: var(--sk-border);
+  --cs-accent: var(--sk-link);
+  --cs-accent-hover: var(--sk-link-hover);
+  --cs-hover: var(--sk-hover);
+  --cs-code-bg: var(--sk-code-bg);
+  --cs-code-fg: var(--sk-code-fg);
+  --valentus-canvas: var(--cs-canvas);
+  --valentus-elevated: var(--cs-elevated);
+  --valentus-ink: var(--cs-ink);
+  --valentus-ink-muted: var(--cs-ink-muted);
+  --valentus-border: var(--cs-border);
+  --valentus-accent: var(--cs-accent);
+
+  /* Admonition marks on light pages (3:1+ on the light surfaces) */
+  --cs-admonition-note: #0050d8;
+  --cs-admonition-tip: #00801a;
+  --cs-admonition-important: #c8001e;
+  --cs-admonition-warning: #b34700;
+  --cs-admonition-caution: #8a00c2;
+
+  /* Syntax: rainbow on the near-black code panel (all 7:1+) */
+  --sk-syn-keyword: #ff6bd5;
+  --sk-syn-string: #7dff8a;
+  --sk-syn-number: #ffb44d;
+  --sk-syn-title: #66d9ff;
+  --sk-syn-type: #ffe14d;
+  --sk-syn-builtin: #66d9ff;
+  --sk-syn-comment: #b8b8c8;
+  --sk-syn-meta: #c9b8ff;
+}
+
+html.dark-theme,
+html[data-scheme="grapesoda"] {
+  --cs-admonition-note: #5cb3ff;
+  --cs-admonition-tip: #4dff6a;
+  --cs-admonition-important: #ff5c7a;
+  --cs-admonition-warning: #ffa033;
+  --cs-admonition-caution: #e07bff;
+}
+
+html[data-scheme="grapesoda"] {
+  --cs-admonition-caution: #ffd0ff;
+  --cs-admonition-important: #ffb3c1;
+  --cs-admonition-note: #b8e2ff;
+}
+
+/* ---- Surfaces and text --------------------------------------------------- */
+html,
+body {
+  background-color: var(--sk-canvas);
+  color: var(--sk-ink);
+}
+.doc { color: var(--sk-ink); }
+.doc h1, .doc h2, .doc h3, .doc h4, .doc h5, .doc h6 { color: var(--sk-heading); }
+.doc h1.sect0 { background: var(--sk-panel); }
+.doc h2:not(.discrete), .doc hr { border-color: var(--sk-border); }
+
+/* Links: the link color contrasts with the dominant-colored borders; underlined
+   so they never rely on color alone. */
+a,
+.doc a { color: var(--sk-link); }
+.doc a { text-decoration: underline; text-decoration-thickness: 0.08em; text-underline-offset: 0.18em; }
+a:hover,
+.doc a:hover { color: var(--sk-link-hover); }
+:focus-visible { outline-color: var(--sk-link); }
+
+/* ---- Navbar -------------------------------------------------------------- */
+.navbar { background: var(--sk-canvas); color: var(--sk-ink); }
+.navbar a,
+.navbar .navbar-item,
+.navbar .navbar-link { color: var(--sk-ink); }
+.navbar .navbar-item:hover,
+.navbar .navbar-link:hover { background: var(--sk-hover); }
+.navbar-dropdown { background: var(--sk-elevated); border-color: var(--sk-border); }
+.navbar-dropdown a.navbar-item:hover { background: var(--sk-hover); }
+.navbar .button { background: var(--sk-elevated); border-color: var(--sk-border); color: var(--sk-ink); }
+.navbar .theme-toggle { color: var(--sk-ink); }
+.navbar .theme-toggle:hover { background: var(--sk-hover); }
+@media screen and (max-width: 1023.5px) {
+  .navbar-menu { background: var(--sk-elevated); }
+}
+
+/* ---- Nav, explore panel, toolbar, TOC ------------------------------------ */
+.nav, .nav-panel-menu, .nav-panel-explore, .toolbar { background-color: var(--sk-panel); }
+.toolbar { color: var(--sk-ink-muted); box-shadow: 0 1px 0 var(--sk-border); }
+.nav-menu, .nav-link, .nav-text { color: var(--sk-ink); }
+.nav-menu h3.title { color: var(--sk-ink-muted); }
+.nav .nav-item.is-current-page > .nav-link { color: var(--sk-heading); }
+.nav-panel-explore .context { color: var(--sk-ink-muted); box-shadow: 0 -1px 0 var(--sk-border); }
+.nav-panel-explore .components { background: var(--sk-elevated); }
+.toc-menu { color: var(--sk-ink-muted); }
+.toc .toc-menu h3 { color: var(--sk-heading); }
+.toc .toc-menu a { color: var(--sk-ink-muted); border-left-color: var(--sk-border); }
+.toc .toc-menu a:hover { color: var(--sk-link); }
+.toc .toc-menu a.is-active { border-left-color: var(--sk-link); color: var(--sk-heading); }
+
+/* Default UI glyphs are dark SVGs: recolor them with masks in every scheme */
+.nav-toggle,
+.home-link,
+.nav-item-toggle,
+.nav-menu-toggle {
+  background-image: none !important;
+  background-color: var(--sk-ink);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+.nav-toggle { -webkit-mask-image: url(../img/menu.svg); mask-image: url(../img/menu.svg); -webkit-mask-size: 49%; mask-size: 49%; }
+.home-link { -webkit-mask-image: url(../img/home-o.svg); mask-image: url(../img/home-o.svg); }
+.nav-item-toggle { -webkit-mask-image: url(../img/caret.svg); mask-image: url(../img/caret.svg); -webkit-mask-size: 50%; mask-size: 50%; }
+.nav-menu-toggle { -webkit-mask-image: url(../img/octicons-16.svg#view-unfold); mask-image: url(../img/octicons-16.svg#view-unfold); -webkit-mask-size: 100%; mask-size: 100%; }
+
+/* ---- Control boundaries: dominant-colored, 3:1+ on every surface ---------- */
+input, select, textarea, button, .button,
+#search-input,
+.doc .exampleblock > .content,
+.doc .sidebarblock,
+.doc .listingblock pre,
+.doc .literalblock pre,
+.doc pre.highlight > code,
+.doc table.tableblock,
+.doc table.tableblock > * > tr > *,
+.doc .admonitionblock > table,
+.doc .tabs .tablist > ul li,
+.doc .tabs .tabpanel,
+.doc details,
+
+.nav-panel-explore .component .version a {
+  border-color: var(--sk-border);
+}
+input, select, textarea, button, .button, #search-input { background-color: var(--sk-elevated); color: var(--sk-ink); }
+
+/* ---- Blocks -------------------------------------------------------------- */
+.doc .sidebarblock { background: var(--sk-panel); }
+.doc .exampleblock > .content, .doc details.result > .content { background: var(--sk-elevated); }
+.doc .quoteblock, .doc .verseblock { background: var(--sk-panel); border-left-color: var(--sk-border); color: var(--sk-ink); }
+.doc .quoteblock .attribution { color: var(--sk-ink-muted); }
+.doc .admonitionblock .title, .doc .exampleblock .title, .doc .imageblock .title, .doc .listingblock .title,
+.doc .literalblock .title, .doc .openblock .title, .doc .videoblock .title, .doc table.tableblock caption,
+.doc details.result > summary { color: var(--sk-ink-muted); }
+.doc .admonitionblock td.content { background: var(--sk-elevated); color: var(--sk-ink); }
+.doc .admonitionblock td.icon .icon-note::before { color: var(--cs-admonition-note); }
+.doc .admonitionblock td.icon .icon-tip::before { color: var(--cs-admonition-tip); }
+.doc .admonitionblock td.icon .icon-important::before { color: var(--cs-admonition-important); }
+.doc .admonitionblock td.icon .icon-warning::before { color: var(--cs-admonition-warning); }
+.doc .admonitionblock td.icon .icon-caution::before { color: var(--cs-admonition-caution); }
+.doc kbd { background: var(--sk-elevated); border-color: var(--sk-border); color: var(--sk-ink); box-shadow: 0 1px 0 var(--sk-border); }
+
+/* ---- Code ---------------------------------------------------------------- */
+.doc p code, .doc thead code, .doc .colist > table code, .doc td code, .doc li code, .doc dt code, .doc dd code {
+  background: var(--sk-inline-code-bg);
+  color: var(--sk-inline-code-fg);
+}
+.doc pre code, .doc .listingblock pre code { background: transparent; color: inherit; }
+.doc .listingblock pre:not(.highlight), .doc .literalblock pre, .doc pre.highlight > code, .doc pre {
+  background: var(--sk-code-bg);
+  color: var(--sk-code-fg);
+}
+.doc .source-toolbox { color: var(--sk-syn-comment); }
+.doc .hljs { background: var(--sk-code-bg); color: var(--sk-code-fg); }
+.doc .hljs-keyword, .doc .hljs-selector-tag, .doc .hljs-section, .doc .hljs-doctag { color: var(--sk-syn-keyword); }
+.doc .hljs-string, .doc .hljs-addition, .doc .hljs-template-tag, .doc .hljs-template-variable { color: var(--sk-syn-string); }
+.doc .hljs-number, .doc .hljs-literal, .doc .hljs-regexp, .doc .hljs-link { color: var(--sk-syn-number); }
+.doc .hljs-title, .doc .hljs-name, .doc .hljs-function, .doc .hljs-attr, .doc .hljs-attribute, .doc .hljs-tag { color: var(--sk-syn-title); }
+.doc .hljs-type, .doc .hljs-class .hljs-title, .doc .hljs-title.class_, .doc .hljs-symbol, .doc .hljs-bullet, .doc .hljs-variable { color: var(--sk-syn-type); }
+.doc .hljs-built_in, .doc .hljs-builtin-name { color: var(--sk-syn-builtin); }
+.doc .hljs-comment, .doc .hljs-quote, .doc .hljs-deletion { color: var(--sk-syn-comment); }
+.doc .hljs-meta, .doc .hljs-subst, .doc .hljs-params { color: var(--sk-syn-meta); }
+
+/* ---- Tables -------------------------------------------------------------- */
+.doc table.stripes-all > tbody > tr, .doc table.stripes-even > tbody > tr:nth-of-type(2n),
+.doc table.stripes-hover > tbody > tr:hover, .doc table.stripes-odd > tbody > tr:nth-of-type(odd) { background: var(--sk-panel); }
+.doc table.tableblock > thead { background: var(--sk-panel); }
+.doc table.tableblock > tfoot { background: var(--sk-panel); }
+
+/* ---- Tabs, search -------------------------------------------------------- */
+.doc .tabs .tablist > ul li { background: var(--sk-panel); color: var(--sk-ink); }
+.doc .tabs .tablist > ul li.is-selected { background: var(--sk-elevated); color: var(--sk-heading); }
+.doc .tabs .tabpanel { background: var(--sk-canvas); }
+.search-result-dataset { background: var(--sk-elevated); border-color: var(--sk-border); color: var(--sk-ink); }
+.search-result-component-header, .search-result-document-title { color: var(--sk-heading); }
+.search-result-document-hit > a { color: var(--sk-ink); }
+.search-result-document-hit > a:hover { background: var(--sk-hover); }
+.search-result-highlight { color: var(--sk-link); }
+
+/* ---- Footer -------------------------------------------------------------- */
+footer.footer { background: var(--sk-panel); color: var(--sk-ink); }
+footer.footer a { color: var(--sk-link); }

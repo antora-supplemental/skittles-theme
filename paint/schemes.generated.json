@@ -1,0 +1,341 @@
+[
+  {
+    "id": "light",
+    "label": "Strawberry (light)",
+    "flavor": "strawberry",
+    "slots": [
+      "light"
+    ],
+    "base": "light",
+    "selector": ":root",
+    "tokens": {
+      "canvas": "#ffebee",
+      "elevated": "#ffffff",
+      "panel": "#ffd1d9",
+      "ink": "#1e050a",
+      "heading": "#180105",
+      "inkMuted": "#8a2839",
+      "border": "#f50029",
+      "link": "#0042db",
+      "dominant": "#ff002b",
+      "outline": "#25040a",
+      "hover": "#ffb8c4",
+      "linkHover": "#002e99",
+      "codeBg": "#130609",
+      "codeFg": "#f5f5f5",
+      "inlineCodeBg": "#ffdbe1",
+      "inlineCodeFg": "#99001a",
+      "accentSoft": "color-mix(in srgb, #0042db 16%, transparent)",
+      "navbarInk": "#1e050a",
+      "mode": "light"
+    }
+  },
+  {
+    "id": "strawberrydark",
+    "label": "Strawberry (dark)",
+    "flavor": "strawberry",
+    "slots": [
+      "dark"
+    ],
+    "base": "dark",
+    "selector": "html.dark-theme[data-scheme=\"strawberrydark\"]",
+    "tokens": {
+      "canvas": "#180609",
+      "elevated": "#2b0d12",
+      "panel": "#240a0f",
+      "ink": "#ffebee",
+      "heading": "#ffffff",
+      "inkMuted": "#e87d8f",
+      "border": "#ff002b",
+      "link": "#1ac6ff",
+      "dominant": "#ff3d5e",
+      "outline": "#ffffff",
+      "hover": "#49121c",
+      "linkHover": "#66d9ff",
+      "codeBg": "#130609",
+      "codeFg": "#f5f5f5",
+      "inlineCodeBg": "#2b0d12",
+      "inlineCodeFg": "#ffebee",
+      "accentSoft": "color-mix(in srgb, #1ac6ff 16%, transparent)",
+      "navbarInk": "#ffebee",
+      "mode": "dark"
+    }
+  },
+  {
+    "id": "orangelight",
+    "label": "Orange (light)",
+    "flavor": "orange",
+    "slots": [
+      "light"
+    ],
+    "base": "light",
+    "selector": "html[data-scheme=\"orangelight\"]",
+    "tokens": {
+      "canvas": "#fff3eb",
+      "elevated": "#ffffff",
+      "panel": "#ffe5d1",
+      "ink": "#1e1005",
+      "heading": "#180b01",
+      "inkMuted": "#865027",
+      "border": "#d95e00",
+      "link": "#002ee6",
+      "dominant": "#ff6f00",
+      "outline": "#251204",
+      "hover": "#ffd7b8",
+      "linkHover": "#001f99",
+      "codeBg": "#130c06",
+      "codeFg": "#f5f5f5",
+      "inlineCodeBg": "#ffebdb",
+      "inlineCodeFg": "#994200",
+      "accentSoft": "color-mix(in srgb, #002ee6 16%, transparent)",
+      "navbarInk": "#1e1005",
+      "mode": "light"
+    }
+  },
+  {
+    "id": "orangedark",
+    "label": "Orange (dark)",
+    "flavor": "orange",
+    "slots": [
+      "dark"
+    ],
+    "base": "dark",
+    "selector": "html.dark-theme[data-scheme=\"orangedark\"]",
+    "tokens": {
+      "canvas": "#180e06",
+      "elevated": "#2b1a0d",
+      "panel": "#24150a",
+      "ink": "#fff3eb",
+      "heading": "#ffffff",
+      "inkMuted": "#e8ab7d",
+      "border": "#ff6f00",
+      "link": "#1ab2ff",
+      "dominant": "#ff740a",
+      "outline": "#ffffff",
+      "hover": "#492a12",
+      "linkHover": "#66ccff",
+      "codeBg": "#130c06",
+      "codeFg": "#f5f5f5",
+      "inlineCodeBg": "#2b1a0d",
+      "inlineCodeFg": "#fff3eb",
+      "accentSoft": "color-mix(in srgb, #1ab2ff 16%, transparent)",
+      "navbarInk": "#fff3eb",
+      "mode": "dark"
+    }
+  },
+  {
+    "id": "lemonlight",
+    "label": "Lemon (light)",
+    "flavor": "lemon",
+    "slots": [
+      "light"
+    ],
+    "base": "light",
+    "selector": "html[data-scheme=\"lemonlight\"]",
+    "tokens": {
+      "canvas": "#fffceb",
+      "elevated": "#ffffff",
+      "panel": "#fff7d1",
+      "ink": "#1e1a05",
+      "heading": "#181401",
+      "inkMuted": "#716321",
+      "border": "#a68a00",
+      "link": "#5400e6",
+      "dominant": "#ffd60a",
+      "outline": "#251f04",
+      "hover": "#fff3b8",
+      "linkHover": "#380099",
+      "codeBg": "#131106",
+      "codeFg": "#f5f5f5",
+      "inlineCodeBg": "#fff9db",
+      "inlineCodeFg": "#7d6800",
+      "accentSoft": "color-mix(in srgb, #5400e6 16%, transparent)",
+      "navbarInk": "#1e1a05",
+      "mode": "light"
+    }
+  },
+  {
+    "id": "lemondark",
+    "label": "Lemon (dark)",
+    "flavor": "lemon",
+    "slots": [
+      "dark"
+    ],
+    "base": "dark",
+    "selector": "html.dark-theme[data-scheme=\"lemondark\"]",
+    "tokens": {
+      "canvas": "#181606",
+      "elevated": "#2b270d",
+      "panel": "#24200a",
+      "ink": "#fffceb",
+      "heading": "#ffffff",
+      "inkMuted": "#e8da7d",
+      "border": "#ffdd00",
+      "link": "#ea80ff",
+      "dominant": "#ffde0a",
+      "outline": "#ffffff",
+      "hover": "#494212",
+      "linkHover": "#efa1ff",
+      "codeBg": "#131106",
+      "codeFg": "#f5f5f5",
+      "inlineCodeBg": "#2b270d",
+      "inlineCodeFg": "#fffceb",
+      "accentSoft": "color-mix(in srgb, #ea80ff 16%, transparent)",
+      "navbarInk": "#fffceb",
+      "mode": "dark"
+    }
+  },
+  {
+    "id": "greenlight",
+    "label": "Green Apple (light)",
+    "flavor": "green",
+    "slots": [
+      "light"
+    ],
+    "base": "light",
+    "selector": "html[data-scheme=\"greenlight\"]",
+    "tokens": {
+      "canvas": "#ebffed",
+      "elevated": "#ffffff",
+      "panel": "#d1ffd7",
+      "ink": "#051e09",
+      "heading": "#011804",
+      "inkMuted": "#21712b",
+      "border": "#00a115",
+      "link": "#bd0084",
+      "dominant": "#00ff22",
+      "outline": "#042508",
+      "hover": "#b8ffc1",
+      "linkHover": "#99006b",
+      "codeBg": "#061308",
+      "codeFg": "#f5f5f5",
+      "inlineCodeBg": "#dbffe0",
+      "inlineCodeFg": "#007a10",
+      "accentSoft": "color-mix(in srgb, #bd0084 16%, transparent)",
+      "navbarInk": "#051e09",
+      "mode": "light"
+    }
+  },
+  {
+    "id": "greendark",
+    "label": "Green Apple (dark)",
+    "flavor": "green",
+    "slots": [
+      "dark"
+    ],
+    "base": "dark",
+    "selector": "html.dark-theme[data-scheme=\"greendark\"]",
+    "tokens": {
+      "canvas": "#061809",
+      "elevated": "#0d2b11",
+      "panel": "#0a240e",
+      "ink": "#ebffed",
+      "heading": "#ffffff",
+      "inkMuted": "#7de88b",
+      "border": "#00ff22",
+      "link": "#ff78d6",
+      "dominant": "#0aff2b",
+      "outline": "#ffffff",
+      "hover": "#12491a",
+      "linkHover": "#ff9ce1",
+      "codeBg": "#061308",
+      "codeFg": "#f5f5f5",
+      "inlineCodeBg": "#0d2b11",
+      "inlineCodeFg": "#ebffed",
+      "accentSoft": "color-mix(in srgb, #ff78d6 16%, transparent)",
+      "navbarInk": "#ebffed",
+      "mode": "dark"
+    }
+  },
+  {
+    "id": "grapelight",
+    "label": "Grape (light)",
+    "flavor": "grape",
+    "slots": [
+      "light"
+    ],
+    "base": "light",
+    "selector": "html[data-scheme=\"grapelight\"]",
+    "tokens": {
+      "canvas": "#f8ebff",
+      "elevated": "#ffffff",
+      "panel": "#f0d1ff",
+      "ink": "#16051e",
+      "heading": "#110118",
+      "inkMuted": "#6a288a",
+      "border": "#aa00ff",
+      "link": "#006149",
+      "dominant": "#aa00ff",
+      "outline": "#1a0425",
+      "hover": "#e7b8ff",
+      "linkHover": "#004d39",
+      "codeBg": "#0f0613",
+      "codeFg": "#f5f5f5",
+      "inlineCodeBg": "#f3dbff",
+      "inlineCodeFg": "#660099",
+      "accentSoft": "color-mix(in srgb, #006149 16%, transparent)",
+      "navbarInk": "#16051e",
+      "mode": "light"
+    }
+  },
+  {
+    "id": "dark",
+    "label": "Grape (dark)",
+    "flavor": "grape",
+    "slots": [
+      "dark"
+    ],
+    "base": "dark",
+    "selector": "html.dark-theme",
+    "tokens": {
+      "canvas": "#120618",
+      "elevated": "#210d2b",
+      "panel": "#1b0a24",
+      "ink": "#f8ebff",
+      "heading": "#ffffff",
+      "inkMuted": "#c47de8",
+      "border": "#aa00ff",
+      "link": "#b3ff1a",
+      "dominant": "#be3dff",
+      "outline": "#ffffff",
+      "hover": "#371249",
+      "linkHover": "#ccff66",
+      "codeBg": "#0f0613",
+      "codeFg": "#f5f5f5",
+      "inlineCodeBg": "#210d2b",
+      "inlineCodeFg": "#f8ebff",
+      "accentSoft": "color-mix(in srgb, #b3ff1a 16%, transparent)",
+      "navbarInk": "#f8ebff",
+      "mode": "dark"
+    }
+  },
+  {
+    "id": "grapesoda",
+    "label": "Grape Soda (special)",
+    "flavor": "grape",
+    "slots": [],
+    "base": "light",
+    "selector": "html[data-scheme=\"grapesoda\"],\nhtml.dark-theme[data-scheme=\"grapesoda\"]",
+    "tokens": {
+      "canvas": "#8d00eb",
+      "elevated": "#6609a5",
+      "panel": "#7905c7",
+      "ink": "#ffffff",
+      "heading": "#ffffff",
+      "inkMuted": "#f9f0ff",
+      "border": "#ffe81a",
+      "link": "#75f4ff",
+      "dominant": "#de70ff",
+      "outline": "#ffffff",
+      "hover": "#540788",
+      "linkHover": "#ebfdff",
+      "codeBg": "#0e0613",
+      "codeFg": "#f5f5f5",
+      "inlineCodeBg": "#6609a5",
+      "inlineCodeFg": "#ffffff",
+      "accentSoft": "color-mix(in srgb, #75f4ff 16%, transparent)",
+      "navbarInk": "#ffffff",
+      "mode": "special"
+    }
+  }
+]

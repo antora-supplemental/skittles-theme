@@ -1,0 +1,14 @@
+{
+  id: "skittles-paint",
+  name: "Skittles Paint",
+  version: "0.1.0",
+  type: "ui-paint",
+  description: "Skittles: 11 high-vibrance, high-contrast color schemes (light and dark per classic Skittles flavor, plus Grape Soda, slot none) in one @color-schemes stylesheet. --cs-* contract plus Default UI / content / highlight.js rules.",
+  repository: "https://github.com/antora-supplemental/skittles-theme",
+  layer: "paint",
+  main: "paint/lib/index.js",
+  requires: ["color-scheme@0.4.0"],
+  tokens: { sets: ["cs", "sk"] },
+  paint: { css: "paint/css/skittles-paint.css", extraSelectors: [".valentus-", ".skittles-"], source: "paint/schemes.json5" },
+  slots: { head: { stylesheets: ["css/skittles-paint.css"], at: "color-scheme:paint-slot", after: ["css/site.css", "css/color-scheme.css"] } },
+}

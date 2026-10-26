@@ -1,0 +1,48 @@
+{
+  "name": "skittles-theme",
+  "version": "0.1.0",
+  "description": "Skittles: a high-vibrance, high-contrast Antora theme. Skittles Layout (a small overlay on Valentus Layout) plus Skittles Paint (11 color schemes on the --cs-* contract of @antora-supplemental/color-scheme).",
+  "private": true,
+  "keywords": [
+    "antora",
+    "antora-theme",
+    "documentation",
+    "asciidoc",
+    "color-scheme"
+  ],
+  "homepage": "https://antora-supplemental.github.io/skittles-theme",
+  "license": "MIT",
+  "author": "Ryan Johnson (https://github.com/AMDphreak)",
+  "files": [
+    "paint/**/*",
+    "packages/skittles-layout/**/*"
+  ],
+  "scripts": {
+    "build": "antora antora-playbook.yml",
+    "build:local": "antora antora-playbook-local.yml",
+    "build:bundle": "node scripts/build-bundle.mjs",
+    "paint:schemes": "node scripts/build-schemes.mjs",
+    "paint:validate": "node scripts/validate-all-paint.mjs",
+    "paint:bake": "node scripts/bake-paint.mjs",
+    "test": "node --test test/*.test.js paint/test/*.test.js",
+    "test:a11y": "node test/a11y/axe-all-schemes.mjs build/site",
+    "screenshots": "node scripts/screenshots.mjs",
+    "serve": "pnpm build:local && npx http-server build/site -p 8080 -o",
+    "clean": "rimraf build .cache"
+  },
+  "devDependencies": {
+    "@antora-supplemental/color-scheme": "github:antora-supplemental/antora-ui-chassis#color-scheme-v0.4.0&path:packages/color-scheme",
+    "@antora-supplemental/light-dark-mode": "github:antora-supplemental/antora-ui-chassis#light-dark-mode-v0.1.2&path:packages/light-dark-mode",
+    "@antora-supplemental/valentus-layout": "github:antora-supplemental/valentus-theme#v4.1.0&path:packages/valentus-layout",
+    "@antora/lunr-extension": "1.0.0-alpha.12",
+    "@asciidoctor/tabs": "^1.0.0-beta.6",
+    "antora": "^3.1.14",
+    "axe-core": "^4.14.0",
+    "http-server": "^14.1.1",
+    "json5": "^2.2.3",
+    "playwright-core": "^1.64.1",
+    "rimraf": "^6.0.1"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "main": "paint/lib/index.js"
+}
