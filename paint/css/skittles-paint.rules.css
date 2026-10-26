@@ -7,7 +7,9 @@
   --sk-lemon: #ffd500;
   --sk-green: #2fbf3a;
   --sk-grape: #8a2be2;
-  --sk-rainbow-stops: var(--sk-strawberry) 0 20%, var(--sk-orange) 20% 40%, var(--sk-lemon) 40% 60%, var(--sk-green) 60% 80%, var(--sk-grape) 80% 100%;
+  --sk-rainbow-stops: var(--sk-strawberry) 0%, var(--sk-orange) 25%, var(--sk-lemon) 50%, var(--sk-green) 75%, var(--sk-grape) 100%;
+  /* Seamless loop (ends where it starts) for repeating rails: no hard seam between tiles. */
+  --sk-rainbow-loop: linear-gradient(180deg, var(--sk-strawberry), var(--sk-orange), var(--sk-lemon), var(--sk-green), var(--sk-grape), var(--sk-strawberry));
   --sk-rainbow: linear-gradient(90deg, var(--sk-rainbow-stops));
   --sk-rainbow-v: linear-gradient(180deg, var(--sk-rainbow-stops));
   --sk-rainbow-smooth: linear-gradient(180deg, var(--sk-strawberry), var(--sk-orange), var(--sk-lemon), var(--sk-green), var(--sk-grape));

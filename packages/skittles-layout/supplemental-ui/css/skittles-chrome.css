@@ -1,5 +1,5 @@
 /* Skittles Layout chrome (geometry only). Colors are paint tokens:
-   --sk-rainbow, --sk-rainbow-v, --sk-rainbow-smooth, --sk-border, --sk-link.
+   --sk-rainbow, --sk-rainbow-v, --sk-rainbow-smooth, --sk-rainbow-loop, --sk-border, --sk-link.
    Fallbacks keep the chrome visible (grey) on a paint without --sk-* tokens. */
 :root {
   --skittles-strip: 6px;
@@ -43,7 +43,7 @@ body { padding-bottom: var(--skittles-strip); }
 .nav-container { position: relative; }
 
 /* 3. Rainbow wire guide lines in the right-hand TOC tree: each level's rail is a
-   rainbow (repeating flavor stripes), each entry hangs off it with a short stub. */
+   rainbow (smooth looping flavor gradient), each entry hangs off it with a short stub. */
 .toc .toc-menu ul { position: relative; padding-left: calc(var(--skittles-wire) + 0.6rem); }
 .toc .toc-menu ul::before {
   content: "";
@@ -55,7 +55,7 @@ body { padding-bottom: var(--skittles-strip); }
   border-radius: var(--skittles-wire);
   background: var(--sk-rainbow-smooth, GrayText);
 }
-.toc .toc-menu ul ul::before { background: var(--sk-rainbow-v, GrayText); background-size: 100% 2.5rem; background-repeat: repeat-y; }
+.toc .toc-menu ul ul::before { background: var(--sk-rainbow-loop, var(--sk-rainbow-v, GrayText)); background-size: 100% 2.5rem; background-repeat: repeat-y; }
 .toc .toc-menu li { position: relative; }
 .toc .toc-menu li::before {
   content: "";
