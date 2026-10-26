@@ -3,6 +3,12 @@
 
 == 2026-10-26
 
+=== Per-build cache-busting of CSS and JS
+
+* A phone still showed the blank gap above the content and the two-line breadcrumb at 2:11 AM CDT, after both fixes were live. Emulating a 320px Pixel with touch, DPR 3 and the dark scheme saved showed no gap on the live site. Putting back the old `.nav-container { position: relative }` rule reproduced the 600px gap exactly, so the phone was running stylesheets it had cached before the fix. They have fixed names and a 4-hour cache lifetime.
+* The build now adds `?v=<content hash>` to every `_/css`, `_/js` and `search-index.js` URL in the generated HTML (`scripts/cache-bust.mjs`), so each deploy fetches fresh assets. HTML itself is cached for 10 minutes.
+* `pnpm test:layout` now emulates phones (mobile user agent, touch, DPR 3, scheme saved in localStorage), adds a 320px width, and fails on horizontal overflow.
+
 === Valentus Layout 4.2.1, browser test for the content top
 
 * Valentus Layout moves to v4.2.1: the breadcrumb scrolls sideways with no scrollbar and fades each edge whenever text is hidden past it.

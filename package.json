@@ -35,7 +35,7 @@
     "packages/skittles-layout/**/*"
   ],
   "scripts": {
-    "build": "antora antora-playbook.yml",
+    "build": "antora antora-playbook.yml && node scripts/cache-bust.mjs build/site",
     "build:local": "antora antora-playbook-local.yml",
     "build:bundle": "node scripts/build-bundle.mjs",
     "paint:schemes": "node scripts/build-schemes.mjs",
