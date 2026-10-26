@@ -1,0 +1,72 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Semver X.Y.Z to publish (tag vX.Y.Z must exist on the remote)
+        required: true
+
+permissions:
+  contents: write
+
+env:
+  RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && format('v{0}', inputs.version) || github.ref_name }}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          ref: ${{ env.RELEASE_TAG }}
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: "pnpm"
+      - run: pnpm install --no-frozen-lockfile
+
+      - name: Verify package version matches tag
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          TAG_VERSION="${RELEASE_TAG#v}"
+          if [ "$PACKAGE_VERSION" != "$TAG_VERSION" ]; then
+            echo "package.json version ($PACKAGE_VERSION) does not match tag ($TAG_VERSION)"; exit 1
+          fi
+
+      - name: Validate paint and run tests
+        run: |
+          pnpm paint:validate
+          pnpm test
+
+      - name: Release notes from the Antora changelog
+        run: |
+          V="${RELEASE_TAG#v}"
+          awk -v v="$V" '$0 ~ "^=== .*v" v "\\b" {f=1; next} f && /^==/ {exit} f {print}' docs/modules/guide/pages/changelog.adoc > release_notes.md
+          [ -s release_notes.md ] || echo "Skittles Theme ${RELEASE_TAG}." > release_notes.md
+
+      - name: Build UI bundles
+        run: |
+          curl -fL -o default-ui-bundle.zip "https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable"
+          rm -rf build/default-ui && mkdir -p build/default-ui
+          unzip -oq default-ui-bundle.zip -d build/default-ui || [ $? -le 1 ]
+          # Layout-only bundle: Default UI + Valentus Layout + Skittles chrome (pair with any --sk-* paint)
+          node scripts/build-bundle.mjs build/default-ui build/layout-bundle --no-paint
+          (cd build/layout-bundle && zip -qr ../../skittles-layout-bundle.zip .)
+          # Full bundle with Skittles Paint baked in at the paint slot
+          node scripts/build-bundle.mjs build/default-ui build/ui-bundle
+          (cd build/ui-bundle && zip -qr ../../ui-bundle.zip .)
+
+      - uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ env.RELEASE_TAG }}
+          body_path: release_notes.md
+          files: |
+            ui-bundle.zip
+            skittles-layout-bundle.zip
+          overwrite_files: true
