@@ -21,7 +21,7 @@ ui:
   bundle:
     url: ./build/default-ui-bundle.zip
 
-  # Valentus Layout, reused unchanged as a dependency (pinned to valentus-theme v4.1.0)
+  # Valentus Layout, reused unchanged as a dependency (pinned to valentus-theme v4.2.0)
   supplemental_files: ./node_modules/@antora-supplemental/valentus-layout/supplemental-ui
 
 output:
@@ -33,7 +33,10 @@ runtime:
 
 antora:
   extensions:
-    # Skittles brand overlay (demo/docs only; not in the shipped bundle)
+    # Chassis placeholder logo (brand-logo / brand-placeholder-logo partials, favicons)
+    - require: "@antora-supplemental/brand-placeholder"
+    # Skittles brand overlay (demo/docs only; not in the shipped bundle). After
+    # brand-placeholder so the skittle mark replaces the placeholder partial.
     - require: ./docs/brand/lib/brand-overlay.js
     - require: "@antora-supplemental/light-dark-mode"
       toggle: placed

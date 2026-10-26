@@ -36,10 +36,10 @@ test('insertLink goes after the last Valentus layout stylesheet', () => {
 })
 
 test('brand overlay overrides the placeholder partial with the --sk-dominant skittle', () => {
-  const mark = fs.readFileSync(path.join(ROOT, 'docs/brand/supplemental-ui/partials/valentus-logo-placeholder.hbs'), 'utf8')
+  const mark = fs.readFileSync(path.join(ROOT, 'docs/brand/supplemental-ui/partials/brand-placeholder-logo.hbs'), 'utf8')
   assert.match(mark, /var\(--sk-dominant/)
   assert.match(mark, /var\(--sk-outline/)
-  assert.ok(require('../docs/brand/lib/brand-overlay.js').PLACEHOLDER_STEMS.includes('valentus-logo-placeholder'))
+  assert.ok(require('../docs/brand/lib/brand-overlay.js').PLACEHOLDER_STEMS.includes('brand-placeholder-logo'))
 })
 
 test('overlay never repositions .nav-container (mobile drawer must stay fixed, out of flow)', () => {

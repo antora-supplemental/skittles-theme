@@ -13,7 +13,7 @@ It has 11 color schemes, rainbow strips at the top and bottom of the page, a rai
 |Part |Role
 
 |`packages/skittles-layout`
-|Layout overlay that extends `@antora-supplemental/valentus-layout@4.1.0`. Adds `css/skittles-chrome.css` with geometry only (strips, divider, wires, border widths, motion) and no literal colors.
+|Layout overlay that extends `@antora-supplemental/valentus-layout@4.2.0`. Adds `css/skittles-chrome.css` with geometry only (strips, divider, wires, border widths, motion) and no literal colors.
 
 |`paint`
 |Skittles Paint. One `css/skittles-paint.css` with the `@color-schemes` manifest and 11 generated `--sk-*` token blocks, linked at the Valentus paint slot.
@@ -45,7 +45,8 @@ Release bundles (`ui-bundle.zip` with paint baked in, and the layout-only `skitt
 
 * https://antora.org[Antora] and the Antora Default UI
 * https://github.com/antora-supplemental/antora-ui-chassis[antora-ui-chassis] `color-scheme` v0.4.0 and `light-dark-mode` v0.1.2
-* Valentus Layout v4.1.0
+* Valentus Layout v4.2.0
+* `@antora-supplemental/brand-placeholder` v0.1.0 (shared placeholder logo and favicons)
 
 == Changelog
 

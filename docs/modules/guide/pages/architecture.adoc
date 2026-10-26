@@ -5,7 +5,7 @@
 |Layer |Package |Owns
 
 |Base |Antora Default UI |page templates, site.css
-|Layout |Valentus Layout 4.1.0 (dependency, unchanged) |header, mast, nav/article/TOC grid, toolbars, paint slot
+|Layout |Valentus Layout 4.2.0 (dependency, unchanged) |header, mast, nav/article/TOC grid, toolbars, paint slot
 |Layout overlay |`packages/skittles-layout` |strip height and placement, divider width, TOC wire geometry, border widths, reduced motion
 |Paint |`paint/` (Skittles Paint) |all colors: per-scheme `--sk-*` tokens, rainbow stops and gradients, `--cs-*` mapping, Default UI color rules
 |Brand (demo only) |`docs/brand` |the skittle mark

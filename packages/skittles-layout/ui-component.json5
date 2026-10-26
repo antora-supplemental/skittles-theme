@@ -7,7 +7,7 @@
   repository: "https://github.com/antora-supplemental/skittles-theme",
   layer: "layout",
   main: "packages/skittles-layout/lib/index.js",
-  extends: "valentus-layout@4.1.0",
+  extends: "valentus-layout@4.2.0",
   requires: ["color-scheme"],
   recommends: ["skittles-paint"],
   tokens: { reads: ["sk"], fallback: "system-colors" },

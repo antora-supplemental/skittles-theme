@@ -1,8 +1,7 @@
 = Header logo
 
 The Skittles bundle ships no logo files.
-Without `site.keys.header_logo` the header shows the generic placeholder from the layout.
-// TODO(chassis-placeholder): the placeholder is moving to a shared antora-ui-chassis package.
+Without `site.keys.header_logo` the header shows the shared placeholder from `@antora-supplemental/brand-placeholder` (antora-ui-chassis), which the bundle carries along with its placeholder favicons.
 
 Set your own logo:
 

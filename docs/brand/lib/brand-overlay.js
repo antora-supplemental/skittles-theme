@@ -3,10 +3,11 @@
 /**
  * Skittles demo/docs brand overlay (NOT part of the shipped bundle).
  *
- * The Skittles bundle carries no logo files: consumers get the layout's generic
- * placeholder. TODO(chassis-placeholder): when the shared placeholder package in
- * antora-ui-chassis is published, the bundle inherits it from there; this overlay
- * then overrides that package's partial (update PLACEHOLDER_STEMS below).
+ * The Skittles bundle carries no logo files: consumers get the shared placeholder
+ * from @antora-supplemental/brand-placeholder (baked into the bundle; Valentus
+ * Layout 4.2 calls its brand-logo partial). This overlay replaces that package's
+ * brand-placeholder-logo partial on this demo site only; register it after the
+ * brand-placeholder extension.
  *
  * This site's own skittle mark replaces the placeholder partial with an inline SVG
  * filled with var(--sk-dominant), so it changes with every scheme. Files under
@@ -16,7 +17,7 @@ const fs = require('node:fs')
 const path = require('node:path')
 
 const DIR = path.join(__dirname, '..', 'supplemental-ui')
-const PLACEHOLDER_STEMS = ['valentus-logo-placeholder'] // TODO(chassis-placeholder): add the chassis partial stem
+const PLACEHOLDER_STEMS = ['brand-placeholder-logo']
 
 function walk (dir, base = '') {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
@@ -33,7 +34,7 @@ module.exports.register = function () {
       const contents = fs.readFileSync(path.join(DIR, rel))
       if (rel.startsWith('partials/')) {
         const stem = path.posix.basename(rel, '.hbs')
-        const stems = stem === 'valentus-logo-placeholder' ? PLACEHOLDER_STEMS : [stem]
+        const stems = stem === 'brand-placeholder-logo' ? PLACEHOLDER_STEMS : [stem]
         for (const s of stems) {
           const p = uiCatalog.findByType('partial').find((f) => f.stem === s)
           if (p) p.contents = contents

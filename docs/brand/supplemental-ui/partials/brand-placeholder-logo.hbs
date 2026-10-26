@@ -1,7 +1,7 @@
 {{!-- Skittles demo/docs brand mark (NOT shipped in the bundle). Original art: a
   lentil-shaped candy with a small S. Fill follows the active scheme's
   --sk-dominant; the --sk-outline stroke keeps 3:1 against the header. --}}
-<svg class="valentus-header-logo skittles-mark" viewBox="0 0 48 48" width="34" height="34" role="img" aria-label="Skittles Theme" focusable="false">
+<svg class="{{#if base}}{{base}}{{else}}brand-logo{{/if}} skittles-mark" viewBox="0 0 48 48" width="34" height="34" role="img" aria-label="Skittles Theme" focusable="false">
   <ellipse cx="24" cy="25.5" rx="20" ry="16.5" fill="var(--sk-outline, #000)" opacity="0.35"/>
   <ellipse cx="24" cy="24" rx="20" ry="16.5" fill="var(--sk-dominant, #e4002b)" stroke="var(--sk-outline, #000)" stroke-width="2.5"/>
   <ellipse cx="17" cy="16" rx="7" ry="3" fill="#fff" opacity="0.45" transform="rotate(-18 17 16)"/>

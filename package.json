@@ -17,9 +17,9 @@
     "antora": "^3.1.0"
   },
   "antoraRegistry": {
-    "worksWith": {"valentus-theme":"^4.1.0","@antora-supplemental/color-scheme":"^0.4.0","@antora-supplemental/light-dark-mode":"^0.1.2"},
+    "worksWith": {"valentus-theme":"^4.2.0","@antora-supplemental/color-scheme":"^0.5.3","@antora-supplemental/light-dark-mode":"^0.1.3","@antora-supplemental/brand-placeholder":"^0.1.0"},
     "provides": {"skittles-paint-tokens":"0.1"},
-    "uses": {"valentus-layout-markup":"4","color-scheme-tokens":"^0.4","light-dark-slots":"^0.1"},
+    "uses": {"valentus-layout-markup":"4","color-scheme-tokens":"^0.5","light-dark-slots":"^0.1"},
     "layers": ["paint", "body-kit"],
     "antora": "3",
     "colorSchemes": "paint/css/skittles-paint.css",
@@ -49,9 +49,10 @@
   },
   "devDependencies": {
     "@antora-supplemental/contrast-check": "github:antora-supplemental/antora-ui-chassis#contrast-check-v0.1.0&path:packages/contrast-check",
-    "@antora-supplemental/color-scheme": "github:antora-supplemental/antora-ui-chassis#color-scheme-v0.4.0&path:packages/color-scheme",
-    "@antora-supplemental/light-dark-mode": "github:antora-supplemental/antora-ui-chassis#light-dark-mode-v0.1.2&path:packages/light-dark-mode",
-    "@antora-supplemental/valentus-layout": "github:antora-supplemental/valentus-theme#v4.1.0&path:packages/valentus-layout",
+    "@antora-supplemental/brand-placeholder": "github:antora-supplemental/antora-ui-chassis#brand-placeholder-v0.1.0&path:packages/brand-placeholder",
+    "@antora-supplemental/color-scheme": "github:antora-supplemental/antora-ui-chassis#color-scheme-v0.5.3&path:packages/color-scheme",
+    "@antora-supplemental/light-dark-mode": "github:antora-supplemental/antora-ui-chassis#light-dark-mode-v0.1.3&path:packages/light-dark-mode",
+    "@antora-supplemental/valentus-layout": "github:antora-supplemental/valentus-theme#v4.2.0&path:packages/valentus-layout",
     "@antora/lunr-extension": "1.0.0-alpha.12",
     "@asciidoctor/tabs": "^1.0.0-beta.6",
     "antora": "^3.1.14",
