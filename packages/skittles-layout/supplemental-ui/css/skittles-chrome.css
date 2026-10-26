@@ -42,29 +42,34 @@ body { padding-bottom: var(--skittles-strip); }
 }
 .nav-container { position: relative; }
 
-/* 3. Rainbow wire guide lines in the right-hand TOC tree: each level's rail is a
-   rainbow (smooth looping flavor gradient), each entry hangs off it with a short stub. */
+/* 3. Rainbow wire guide lines in the right-hand TOC tree: ONE continuous rainbow
+   spans the whole tree. Every rail and stub paints the same gradient sized to the
+   full .toc-menu height (--sk-toc-h) and offset by its own position (--sk-wire-y,
+   set by js/skittles-toc-wires.js), so each segment samples the rainbow at its
+   vertical position. Without the script each line falls back to its own gradient. */
 .toc .toc-menu ul { position: relative; padding-left: calc(var(--skittles-wire) + 0.6rem); }
-.toc .toc-menu ul::before {
+.toc .toc-menu ul::before,
+.toc .toc-menu li::before {
   content: "";
   position: absolute;
+  background: var(--sk-rainbow-smooth, GrayText);
+  background-size: 100% var(--sk-toc-h, 100%);
+  background-position: 0 calc(-1 * var(--sk-wire-y, 0px));
+  background-repeat: no-repeat;
+}
+.toc .toc-menu ul::before {
   top: 0.25rem;
   bottom: 0.25rem;
   left: 0;
   width: var(--skittles-wire);
   border-radius: var(--skittles-wire);
-  background: var(--sk-rainbow-smooth, GrayText);
 }
-.toc .toc-menu ul ul::before { background: var(--sk-rainbow-loop, var(--sk-rainbow-v, GrayText)); background-size: 100% 2.5rem; background-repeat: repeat-y; }
 .toc .toc-menu li { position: relative; }
 .toc .toc-menu li::before {
-  content: "";
-  position: absolute;
   left: calc(-0.6rem);
   top: 0.75em;
   width: 0.5rem;
   height: var(--skittles-wire);
-  background: var(--sk-border, GrayText);
 }
 .toc .toc-menu a { border-left: 0 !important; padding-left: 0.15rem; }
 .toc .toc-menu a.is-active { font-weight: 700; text-decoration: underline; text-decoration-color: var(--sk-link, currentColor); text-underline-offset: 0.2em; }
@@ -105,12 +110,7 @@ input, select, textarea, button, .button, #search-input,
 footer.footer a, .toolbar a, .valentus-doc-mast a:not(.valentus-header-logo-item) { text-decoration: underline; text-underline-offset: 0.18em; }
 
 /* TOC is one flat list (li[data-level]); deeper levels get longer wires that reach
-   their indented text, and stubs cycle through the five flavors. */
+   their indented text; every stub samples the one continuous TOC rainbow (section 3). */
 .toc .toc-menu li[data-level="2"]::before { width: 1.6rem; }
 .toc .toc-menu li[data-level="3"]::before { width: 2.35rem; }
-.toc .toc-menu li:nth-child(5n + 1)::before { background: var(--sk-strawberry, GrayText); }
-.toc .toc-menu li:nth-child(5n + 2)::before { background: var(--sk-orange, GrayText); }
-.toc .toc-menu li:nth-child(5n + 3)::before { background: var(--sk-lemon, GrayText); }
-.toc .toc-menu li:nth-child(5n + 4)::before { background: var(--sk-green, GrayText); }
-.toc .toc-menu li:nth-child(5n + 5)::before { background: var(--sk-grape, GrayText); }
 .toc .toc-menu li > a.is-active { border-left: 0; }

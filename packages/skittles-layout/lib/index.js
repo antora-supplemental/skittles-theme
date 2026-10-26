@@ -23,7 +23,8 @@ const path = require('node:path')
 
 const PACKAGE_ID = '@antora-supplemental/skittles-layout'
 const ASSET = 'css/skittles-chrome.css'
-const LINK = `<link rel="stylesheet" href="{{{uiRootPath}}}/${ASSET}">`
+const SCRIPT = 'js/skittles-toc-wires.js'
+const LINK = `<link rel="stylesheet" href="{{{uiRootPath}}}/${ASSET}">\n<script defer src="{{{uiRootPath}}}/${SCRIPT}"></script>`
 const AFTER = /<link rel="stylesheet" href="\{\{\{uiRootPath\}\}\}\/css\/site-themed-svg\.css">/
 
 const bodyOf = (f) => (Buffer.isBuffer(f.contents) ? f.contents.toString('utf8') : String(f.contents || ''))
@@ -35,11 +36,16 @@ function insertLink (source) {
   return `${source.replace(/\s*$/, '')}\n${LINK}\n`
 }
 
-function ensureSkittlesLayout (uiCatalog, outDir) {
-  const contents = fs.readFileSync(path.join(__dirname, '..', 'supplemental-ui', ASSET))
-  const existing = uiCatalog.findByType('asset').find((f) => f.path === ASSET)
+function addAsset (uiCatalog, outDir, rel) {
+  const contents = fs.readFileSync(path.join(__dirname, '..', 'supplemental-ui', rel))
+  const existing = uiCatalog.findByType('asset').find((f) => f.path === rel)
   if (existing) existing.contents = contents
-  else uiCatalog.addFile({ contents, type: 'asset', path: ASSET, out: { dirname: `${outDir}/css`, path: `${outDir}/${ASSET}`, basename: path.basename(ASSET) } })
+  else uiCatalog.addFile({ contents, type: 'asset', path: rel, out: { dirname: `${outDir}/${path.dirname(rel)}`, path: `${outDir}/${rel}`, basename: path.basename(rel) } })
+}
+
+function ensureSkittlesLayout (uiCatalog, outDir) {
+  addAsset(uiCatalog, outDir, ASSET)
+  addAsset(uiCatalog, outDir, SCRIPT)
   const partials = uiCatalog.findByType('partial')
   const head = partials.find((f) => f.stem === 'head-meta') || partials.find((f) => f.stem === 'head-styles')
   if (!head) return false
@@ -62,3 +68,4 @@ module.exports.register = register
 module.exports.ensureSkittlesLayout = ensureSkittlesLayout
 module.exports.insertLink = insertLink
 module.exports.ASSET = ASSET
+module.exports.SCRIPT = SCRIPT
