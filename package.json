@@ -17,6 +17,9 @@
     "antora": "^3.1.0"
   },
   "antoraRegistry": {
+    "worksWith": {"valentus-theme":"^4.1.0","@antora-supplemental/color-scheme":"^0.4.0","@antora-supplemental/light-dark-mode":"^0.1.2"},
+    "provides": {"skittles-paint-tokens":"0.1"},
+    "uses": {"valentus-layout-markup":"4","color-scheme-tokens":"^0.4","light-dark-slots":"^0.1"},
     "layers": ["paint", "body-kit"],
     "antora": "3",
     "colorSchemes": "paint/css/skittles-paint.css",
