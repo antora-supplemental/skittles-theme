@@ -1,0 +1,116 @@
+/* Skittles Layout chrome (geometry only). Colors are paint tokens:
+   --sk-rainbow, --sk-rainbow-v, --sk-rainbow-smooth, --sk-border, --sk-link.
+   Fallbacks keep the chrome visible (grey) on a paint without --sk-* tokens. */
+:root {
+  --skittles-strip: 6px;
+  --skittles-divider: 4px;
+  --skittles-wire: 3px;
+  --skittles-control-border: 2px;
+}
+
+/* 1. Rainbow strips: pure CSS pseudo-elements, no DOM, never announced. */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: var(--skittles-strip);
+  background: var(--sk-rainbow, linear-gradient(90deg, GrayText, GrayText));
+  z-index: 1001;
+  pointer-events: none;
+}
+body::before { top: 0; }
+body::after { bottom: 0; }
+body { padding-bottom: var(--skittles-strip); }
+.header .navbar, body.valentus-body > header .navbar { border-top: var(--skittles-strip) solid transparent; }
+
+/* 2. Rainbow divider between the nav tree and the content. */
+.nav-container,
+.nav {
+  border-right: 0;
+}
+.nav-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: var(--skittles-divider);
+  background: var(--sk-rainbow-v, GrayText);
+  pointer-events: none;
+}
+.nav-container { position: relative; }
+
+/* 3. Rainbow wire guide lines in the right-hand TOC tree: each level's rail is a
+   rainbow (repeating flavor stripes), each entry hangs off it with a short stub. */
+.toc .toc-menu ul { position: relative; padding-left: calc(var(--skittles-wire) + 0.6rem); }
+.toc .toc-menu ul::before {
+  content: "";
+  position: absolute;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  left: 0;
+  width: var(--skittles-wire);
+  border-radius: var(--skittles-wire);
+  background: var(--sk-rainbow-smooth, GrayText);
+}
+.toc .toc-menu ul ul::before { background: var(--sk-rainbow-v, GrayText); background-size: 100% 2.5rem; background-repeat: repeat-y; }
+.toc .toc-menu li { position: relative; }
+.toc .toc-menu li::before {
+  content: "";
+  position: absolute;
+  left: calc(-0.6rem);
+  top: 0.75em;
+  width: 0.5rem;
+  height: var(--skittles-wire);
+  background: var(--sk-border, GrayText);
+}
+.toc .toc-menu a { border-left: 0 !important; padding-left: 0.15rem; }
+.toc .toc-menu a.is-active { font-weight: 700; text-decoration: underline; text-decoration-color: var(--sk-link, currentColor); text-underline-offset: 0.2em; }
+
+/* 4. High-saturation boundaries: widths here, colors (--sk-border) in paint. */
+input, select, textarea, button, .button, #search-input,
+.doc .exampleblock > .content, .doc .sidebarblock,
+.doc .listingblock pre, .doc .literalblock pre,
+.doc table.tableblock, .doc .tabs .tabpanel, .doc details,
+.doc .admonitionblock > table {
+  border-width: var(--skittles-control-border);
+  border-style: solid;
+  border-radius: 8px;
+}
+.doc .admonitionblock > table { border-collapse: separate; border-spacing: 0; overflow: hidden; }
+.doc table.tableblock > * > tr > * { border-width: 1px; border-style: solid; }
+.nav-menu .nav-item.is-current-page > .nav-link,
+.nav-menu .nav-item.is-current-page > .nav-text {
+  border: var(--skittles-control-border) solid var(--sk-border, GrayText);
+  border-radius: 999px;
+  padding: 0 0.5em;
+}
+.nav-menu .nav-link:hover { outline: var(--skittles-control-border) solid var(--sk-border, GrayText); outline-offset: 1px; border-radius: 999px; }
+.valentus-header-logo { overflow: visible; }
+
+/* Logo / chrome hover lift; no motion when the user prefers less. */
+.valentus-header-logo-item svg, .valentus-header-logo-item img { transition: transform 0.2s ease; }
+.valentus-header-logo-item:hover svg, .valentus-header-logo-item:hover img { transform: rotate(-12deg) scale(1.06); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .valentus-header-logo-item:hover svg, .valentus-header-logo-item:hover img { transform: none; }
+}
+@media print {
+  body::before, body::after, .nav-container::after { display: none; }
+}
+
+/* Links inside running text (footer too) are underlined: never color alone. */
+footer.footer a, .toolbar a, .valentus-doc-mast a:not(.valentus-header-logo-item) { text-decoration: underline; text-underline-offset: 0.18em; }
+
+/* TOC is one flat list (li[data-level]); deeper levels get longer wires that reach
+   their indented text, and stubs cycle through the five flavors. */
+.toc .toc-menu li[data-level="2"]::before { width: 1.6rem; }
+.toc .toc-menu li[data-level="3"]::before { width: 2.35rem; }
+.toc .toc-menu li:nth-child(5n + 1)::before { background: var(--sk-strawberry, GrayText); }
+.toc .toc-menu li:nth-child(5n + 2)::before { background: var(--sk-orange, GrayText); }
+.toc .toc-menu li:nth-child(5n + 3)::before { background: var(--sk-lemon, GrayText); }
+.toc .toc-menu li:nth-child(5n + 4)::before { background: var(--sk-green, GrayText); }
+.toc .toc-menu li:nth-child(5n + 5)::before { background: var(--sk-grape, GrayText); }
+.toc .toc-menu li > a.is-active { border-left: 0; }

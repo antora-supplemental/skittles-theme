@@ -1,0 +1,15 @@
+= Skittles Layout
+
+An overlay on `@antora-supplemental/valentus-layout@4.1.0`.
+The Antora extension (`lib/index.js`) adds `css/skittles-chrome.css` to the UI catalog and links it right after the Valentus layout stylesheets in `head-meta.hbs`.
+
+The stylesheet holds geometry only:
+
+* 6px rainbow strips at the top and bottom of the page (`body::before`/`::after`; decorative, hidden in print)
+* a 4px vertical rainbow divider between the nav and the content
+* TOC wires: a rail plus per-item stubs, longer for deeper levels
+* 2px borders on controls, and a pill around the current nav item
+* logo hover motion, removed under `prefers-reduced-motion`
+
+All colors come from `--sk-*` tokens supplied by a paint such as Skittles Paint.
+This package ships no logo files. The header placeholder is inherited from the layout chassis.

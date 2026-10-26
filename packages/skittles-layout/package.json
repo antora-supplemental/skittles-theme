@@ -1,0 +1,10 @@
+{
+  "name": "@antora-supplemental/skittles-layout",
+  "version": "0.1.0",
+  "description": "Skittles Layout: a small chrome overlay (rainbow strips, nav divider, TOC wires, control borders) on top of Valentus Layout; colors come from Skittles Paint tokens.",
+  "private": true,
+  "license": "MIT",
+  "main": "lib/index.js",
+  "repository": { "type": "git", "url": "git+https://github.com/antora-supplemental/skittles-theme.git", "directory": "packages/skittles-layout" },
+  "files": ["lib/**/*", "supplemental-ui/**/*", "ui-component.json5", "README.adoc"]
+}

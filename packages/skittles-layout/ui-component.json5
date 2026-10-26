@@ -1,0 +1,15 @@
+{
+  id: "skittles-layout",
+  name: "Skittles Layout",
+  version: "0.1.0",
+  type: "ui-layout-overlay",
+  description: "Overlay on Valentus Layout: rainbow top/bottom strips, rainbow nav/content divider, rainbow TOC wire lines, thick control borders. Geometry only; colors from --sk-* paint tokens.",
+  repository: "https://github.com/antora-supplemental/skittles-theme",
+  layer: "layout",
+  main: "packages/skittles-layout/lib/index.js",
+  extends: "valentus-layout@4.1.0",
+  requires: ["color-scheme"],
+  recommends: ["skittles-paint"],
+  tokens: { reads: ["sk"], fallback: "system-colors" },
+  slots: { head: { stylesheets: ["css/skittles-chrome.css"], after: ["css/site-themed-svg.css"] } },
+}
