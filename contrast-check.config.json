@@ -1,0 +1,10 @@
+{
+  "pages": [
+    "skittles-theme/0.1/guide/index.html",
+    "demo-pages/admonitions.html",
+    "demo-pages/code-blocks.html",
+    "demo-pages/tables.html",
+    "demo-pages/typography.html"
+  ],
+  "failOn": "error"
+}

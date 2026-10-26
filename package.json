@@ -25,12 +25,13 @@
     "paint:validate": "node scripts/validate-all-paint.mjs",
     "paint:bake": "node scripts/bake-paint.mjs",
     "test": "node --test test/*.test.js paint/test/*.test.js",
-    "test:a11y": "node test/a11y/axe-all-schemes.mjs build/site",
+    "test:a11y": "contrast-check build/site --config contrast-check.config.json",
     "screenshots": "node scripts/screenshots.mjs",
     "serve": "pnpm build:local && npx http-server build/site -p 8080 -o",
     "clean": "rimraf build .cache"
   },
   "devDependencies": {
+    "@antora-supplemental/contrast-check": "github:antora-supplemental/antora-ui-chassis#contrast-check-v0.1.0&path:packages/contrast-check",
     "@antora-supplemental/color-scheme": "github:antora-supplemental/antora-ui-chassis#color-scheme-v0.4.0&path:packages/color-scheme",
     "@antora-supplemental/light-dark-mode": "github:antora-supplemental/antora-ui-chassis#light-dark-mode-v0.1.2&path:packages/light-dark-mode",
     "@antora-supplemental/valentus-layout": "github:antora-supplemental/valentus-theme#v4.1.0&path:packages/valentus-layout",

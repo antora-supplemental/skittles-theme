@@ -36,7 +36,7 @@ pnpm install
 pnpm paint:validate   # strict validate-paint + manifest checks
 pnpm test             # node --test: slots, contrast, overlay links, no logo files
 pnpm build            # Antora site to build/site
-pnpm test:a11y        # axe-core: 5 pages x 11 schemes (needs a served build/site)
+pnpm test:a11y        # contrast-check: 5 pages x every scheme, light + dark (run after pnpm build)
 ----
 
 Release bundles (`ui-bundle.zip` with paint baked in, and the layout-only `skittles-layout-bundle.zip`) are built by `.github/workflows/release.yml` via `scripts/build-bundle.mjs`.
