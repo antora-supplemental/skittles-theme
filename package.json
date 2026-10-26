@@ -17,7 +17,7 @@
     "antora": "^3.1.0"
   },
   "antoraRegistry": {
-    "worksWith": {"valentus-theme":"^4.2.0","@antora-supplemental/color-scheme":"^0.5.3","@antora-supplemental/light-dark-mode":"^0.1.3","@antora-supplemental/brand-placeholder":"^0.1.0"},
+    "worksWith": {"valentus-theme":"^4.2.1","@antora-supplemental/color-scheme":"^0.5.3","@antora-supplemental/light-dark-mode":"^0.1.3","@antora-supplemental/brand-placeholder":"^0.1.0"},
     "provides": {"skittles-paint-tokens":"0.1"},
     "uses": {"valentus-layout-markup":"4","color-scheme-tokens":"^0.5","light-dark-slots":"^0.1"},
     "layers": ["paint", "body-kit"],
@@ -42,6 +42,7 @@
     "paint:validate": "node scripts/validate-all-paint.mjs",
     "paint:bake": "node scripts/bake-paint.mjs",
     "test": "node --test test/*.test.js paint/test/*.test.js",
+    "test:layout": "node test/layout/content-top.mjs",
     "test:a11y": "contrast-check build/site --config contrast-check.config.json",
     "screenshots": "node scripts/screenshots.mjs",
     "serve": "pnpm build:local && npx http-server build/site -p 8080 -o",
@@ -52,7 +53,7 @@
     "@antora-supplemental/brand-placeholder": "github:antora-supplemental/antora-ui-chassis#brand-placeholder-v0.1.0&path:packages/brand-placeholder",
     "@antora-supplemental/color-scheme": "github:antora-supplemental/antora-ui-chassis#color-scheme-v0.5.3&path:packages/color-scheme",
     "@antora-supplemental/light-dark-mode": "github:antora-supplemental/antora-ui-chassis#light-dark-mode-v0.1.3&path:packages/light-dark-mode",
-    "@antora-supplemental/valentus-layout": "github:antora-supplemental/valentus-theme#v4.2.0&path:packages/valentus-layout",
+    "@antora-supplemental/valentus-layout": "github:antora-supplemental/valentus-theme#v4.2.1&path:packages/valentus-layout",
     "@antora/lunr-extension": "1.0.0-alpha.12",
     "@asciidoctor/tabs": "^1.0.0-beta.6",
     "antora": "^3.1.14",

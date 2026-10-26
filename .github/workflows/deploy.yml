@@ -37,6 +37,11 @@ jobs:
         run: pnpm test:a11y --fail-on none --json=contrast-check.json
         env:
           CONTRAST_CHECK_CHROME: /usr/bin/google-chrome
+      - name: Content starts at the top (real browser, every width)
+        run: |
+          npx http-server build/site -p 8093 -s &
+          sleep 2
+          BASE=http://localhost:8093 CHROME=/usr/bin/google-chrome pnpm test:layout
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:

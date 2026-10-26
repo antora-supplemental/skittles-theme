@@ -1,0 +1,16 @@
+= Content top browser test and Valentus 4.2.1
+:page-date: 2026-10-26
+
+== Report
+
+After 67dc243 removed `.nav-container { position: relative }`, the blank space above the content was still showing in some browsers.
+
+== Findings
+
+* The live CSS matched main and the rule was gone. Measured with headless Chromium at 360 to 1920px, light and dark, on every page: the article started 193 to 236px from the top, `window.scrollY` stayed 0 at load and 2 seconds later, and no script added a tall element.
+* Asset URLs such as `_/css/skittles-chrome.css` carry no per-build version, and the CDN serves them with `cache-control: max-age=14400` (4 hours), while HTML gets `max-age=600`. A browser that loaded the page before the deploy keeps the old stylesheet until it expires or the user does a hard reload.
+
+== Changes
+
+* `test/layout/content-top.mjs` (`pnpm test:layout`): Playwright test against the built site. It runs in the deploy workflow before upload.
+* Valentus Layout pinned to v4.2.1.

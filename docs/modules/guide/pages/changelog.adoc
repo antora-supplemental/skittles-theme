@@ -3,6 +3,12 @@
 
 == 2026-10-26
 
+=== Valentus Layout 4.2.1, browser test for the content top
+
+* Valentus Layout moves to v4.2.1: the breadcrumb scrolls sideways with no scrollbar and fades each edge whenever text is hidden past it.
+* Reports of a blank gap above the content after the mobile fix came from cached CSS. The served stylesheets have unversioned URLs and are cached for up to 4 hours, so a browser kept the old `skittles-chrome.css`. A hard reload (Ctrl+F5) clears it.
+* A new real-browser test (`pnpm test:layout`, run in the deploy workflow) checks where the article starts at widths from 360 to 1920px, light and dark, right after load and 2 seconds later, and fails on a gap or a scroll jump. Details: xref:changelog-details/history/2026-10-26 - content top browser test.adoc[].
+
 === Shared chassis placeholder logo, color-scheme 0.5
 
 * The header placeholder logo and favicons now come from `@antora-supplemental/brand-placeholder` v0.1.0 (antora-ui-chassis). The bundle build bakes it in last and checks that no theme layer ships its own brand files. Valentus Layout moves to v4.2.0, whose header calls the shared `brand-logo` partial.

@@ -21,7 +21,7 @@ ui:
   bundle:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
-  # Valentus Layout, reused unchanged as a dependency (pinned to valentus-theme v4.2.0)
+  # Valentus Layout, reused unchanged as a dependency (pinned to valentus-theme v4.2.1)
   supplemental_files: ./node_modules/@antora-supplemental/valentus-layout/supplemental-ui
 
 output:

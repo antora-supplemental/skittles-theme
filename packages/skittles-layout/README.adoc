@@ -1,6 +1,6 @@
 = Skittles Layout
 
-An overlay on `@antora-supplemental/valentus-layout@4.2.0`.
+An overlay on `@antora-supplemental/valentus-layout@4.2.1`.
 The Antora extension (`lib/index.js`) adds `css/skittles-chrome.css` to the UI catalog and links it right after the Valentus layout stylesheets in `head-meta.hbs`.
 
 The stylesheet holds geometry only:
