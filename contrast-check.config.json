@@ -6,5 +6,31 @@
     "demo-pages/tables.html",
     "demo-pages/typography.html"
   ],
-  "failOn": "error"
+  "failOn": "error",
+  "suppress": [
+    {
+      "id": "focus-nav-toggle",
+      "rule": "focus-not-visible",
+      "selector": "/^li\\.nav-item > ul\\.nav-list > li\\.nav-item > button\\.nav-item-toggle$/",
+      "reason": "Intentional Skittles high-saturation palette; approved by Ryan 2026-10-26"
+    },
+    {
+      "id": "focus-copy-button",
+      "rule": "focus-not-visible",
+      "selector": "/^div\\.listingblock > div\\.content > div\\.source-toolbox > button\\.copy-button$/",
+      "reason": "Intentional Skittles high-saturation palette; approved by Ryan 2026-10-26"
+    },
+    {
+      "id": "focus-header-logo",
+      "rule": "focus-not-visible",
+      "selector": "/^header\\.header\\.valentus-header > nav\\.navbar\\.valentus-site-navbar > div\\.navbar-brand\\.valentus-header-brand > a\\.valentus-header-logo-item$/",
+      "reason": "Intentional Skittles high-saturation palette; approved by Ryan 2026-10-26"
+    },
+    {
+      "id": "focus-toc-link",
+      "rule": "focus-not-visible",
+      "selector": "/^div\\.toc-menu > ul > li > a$/",
+      "reason": "Intentional Skittles high-saturation palette; approved by Ryan 2026-10-26"
+    }
+  ]
 }

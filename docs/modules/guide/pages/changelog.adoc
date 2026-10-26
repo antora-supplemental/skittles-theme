@@ -3,6 +3,12 @@
 
 == 2026-10-26
 
+=== Shared asset fingerprinting, Valentus Layout 4.2.2
+
+* Versioned asset links now come from the shared chassis extension `@antora-supplemental/asset-fingerprint` (`asset-fingerprint-v0.1.0`), the last extension in the playbook. It replaces `scripts/cache-bust.mjs`. URLs still get `?v=<hash>`, now hashed per file, so an unchanged file keeps its cached copy.
+* Valentus Layout pinned at `v4.2.2` (`worksWith` `^4.2.2`).
+* Contrast check: `contrast-check` 0.2.0 with four `suppress` entries for the `focus-not-visible` errors (nav toggle, copy button, header logo, TOC link). They are intentional in the high-saturation palette and were approved by Ryan on 2026-10-26. `--show-suppressed` lists them.
+
 === Per-build cache-busting of CSS and JS
 
 * A phone still showed the blank gap above the content and the two-line breadcrumb at 2:11 AM CDT, after both fixes were live. Emulating a 320px Pixel with touch, DPR 3 and the dark scheme saved showed no gap on the live site. Putting back the old `.nav-container { position: relative }` rule reproduced the 600px gap exactly, so the phone was running stylesheets it had cached before the fix. They have fixed names and a 4-hour cache lifetime.

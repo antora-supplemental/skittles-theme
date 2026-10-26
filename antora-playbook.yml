@@ -49,6 +49,8 @@ antora:
     - require: ./paint/lib/index.js
     - require: "@antora/lunr-extension"
       index_latest_only: true
+    # Last: ?v=<content hash> on CSS/JS URLs (chassis asset-fingerprint; replaced scripts/cache-bust.mjs).
+    - require: "@antora-supplemental/asset-fingerprint"
 
 asciidoc:
   extensions:

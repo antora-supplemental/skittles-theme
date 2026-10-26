@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      '@antora-supplemental/asset-fingerprint':
+        specifier: github:antora-supplemental/antora-ui-chassis#asset-fingerprint-v0.1.0&path:packages/asset-fingerprint
+        version: https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/bd25a012cfe5bee46832f8b901b32290d6a76dc8#path:packages/asset-fingerprint
       '@antora-supplemental/brand-placeholder':
         specifier: github:antora-supplemental/antora-ui-chassis#brand-placeholder-v0.1.0&path:packages/brand-placeholder
         version: https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/67b6c8d768b5ed1d5360cf6452c60f2f608ed1aa#path:packages/brand-placeholder
@@ -15,14 +18,14 @@ importers:
         specifier: github:antora-supplemental/antora-ui-chassis#color-scheme-v0.5.3&path:packages/color-scheme
         version: https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/ecf83e69ec7bfac298bc01f8c388ac7acc1c9481#path:packages/color-scheme
       '@antora-supplemental/contrast-check':
-        specifier: github:antora-supplemental/antora-ui-chassis#contrast-check-v0.1.0&path:packages/contrast-check
-        version: https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/a430a52dfdf48450fe6d62a8bb7d8dbb6d664680#path:packages/contrast-check
+        specifier: github:antora-supplemental/antora-ui-chassis#contrast-check-v0.2.0&path:packages/contrast-check
+        version: https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/31ec0462c00fe7c505720e4dcadbe6ad4518df0b#path:packages/contrast-check
       '@antora-supplemental/light-dark-mode':
         specifier: github:antora-supplemental/antora-ui-chassis#light-dark-mode-v0.1.3&path:packages/light-dark-mode
         version: https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/ad8107b19fce482d7ae7197700e443329b587f56#path:packages/light-dark-mode
       '@antora-supplemental/valentus-layout':
-        specifier: github:antora-supplemental/valentus-theme#v4.2.1&path:packages/valentus-layout
-        version: https://codeload.github.com/antora-supplemental/valentus-theme/tar.gz/8d38e3caadfdf979e28c3bd0bccf3b916da79a74#path:packages/valentus-layout
+        specifier: github:antora-supplemental/valentus-theme#v4.2.2&path:packages/valentus-layout
+        version: https://codeload.github.com/antora-supplemental/valentus-theme/tar.gz/c1f54f3a307f9d4c3a1c08d6fe4a12bc1f69971f#path:packages/valentus-layout
       '@antora/lunr-extension':
         specifier: 1.0.0-alpha.12
         version: 1.0.0-alpha.12
@@ -50,6 +53,12 @@ importers:
 
 packages:
 
+  '@antora-supplemental/asset-fingerprint@https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/bd25a012cfe5bee46832f8b901b32290d6a76dc8#path:packages/asset-fingerprint':
+    resolution: {path: packages/asset-fingerprint, tarball: https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/bd25a012cfe5bee46832f8b901b32290d6a76dc8}
+    version: 0.1.0
+    engines: {node: '>=18'}
+    hasBin: true
+
   '@antora-supplemental/brand-placeholder@https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/67b6c8d768b5ed1d5360cf6452c60f2f608ed1aa#path:packages/brand-placeholder':
     resolution: {path: packages/brand-placeholder, tarball: https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/67b6c8d768b5ed1d5360cf6452c60f2f608ed1aa}
     version: 0.1.0
@@ -59,9 +68,9 @@ packages:
     resolution: {path: packages/color-scheme, tarball: https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/ecf83e69ec7bfac298bc01f8c388ac7acc1c9481}
     version: 0.5.3
 
-  '@antora-supplemental/contrast-check@https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/a430a52dfdf48450fe6d62a8bb7d8dbb6d664680#path:packages/contrast-check':
-    resolution: {path: packages/contrast-check, tarball: https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/a430a52dfdf48450fe6d62a8bb7d8dbb6d664680}
-    version: 0.1.0
+  '@antora-supplemental/contrast-check@https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/31ec0462c00fe7c505720e4dcadbe6ad4518df0b#path:packages/contrast-check':
+    resolution: {path: packages/contrast-check, tarball: https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/31ec0462c00fe7c505720e4dcadbe6ad4518df0b}
+    version: 0.2.0
     engines: {node: '>=20'}
     hasBin: true
 
@@ -69,8 +78,8 @@ packages:
     resolution: {path: packages/light-dark-mode, tarball: https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/ad8107b19fce482d7ae7197700e443329b587f56}
     version: 0.1.3
 
-  '@antora-supplemental/valentus-layout@https://codeload.github.com/antora-supplemental/valentus-theme/tar.gz/8d38e3caadfdf979e28c3bd0bccf3b916da79a74#path:packages/valentus-layout':
-    resolution: {path: packages/valentus-layout, tarball: https://codeload.github.com/antora-supplemental/valentus-theme/tar.gz/8d38e3caadfdf979e28c3bd0bccf3b916da79a74}
+  '@antora-supplemental/valentus-layout@https://codeload.github.com/antora-supplemental/valentus-theme/tar.gz/c1f54f3a307f9d4c3a1c08d6fe4a12bc1f69971f#path:packages/valentus-layout':
+    resolution: {path: packages/valentus-layout, tarball: https://codeload.github.com/antora-supplemental/valentus-theme/tar.gz/c1f54f3a307f9d4c3a1c08d6fe4a12bc1f69971f}
     version: 4.0.0
 
   '@antora/asciidoc-loader@3.2.1':
@@ -835,6 +844,11 @@ packages:
     resolution: {integrity: sha512-1Dly4xqlulvPD3fZUQJLY+FUIeqN3N2MM3uqe4rCJftAvOjFa3jFGfctOgluGx4ahPbUCsZkmJILiP0Vi4T6lQ==}
     engines: {node: '>=4'}
 
+  yaml@2.9.1:
+    resolution: {integrity: sha512-3NxN8+78OdzbT7C/WjGsyfPAtJaN3FNDsWxv7Y7mcDsT/oOmgW8BpyQQFFBnvZE3j9Y2Sdz1ULFLezL7Eb2yFw==}
+    engines: {node: '>= 14.6'}
+    hasBin: true
+
   yargs-parser@20.2.9:
     resolution: {integrity: sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==}
     engines: {node: '>=10'}
@@ -848,20 +862,25 @@ packages:
 
 snapshots:
 
+  '@antora-supplemental/asset-fingerprint@https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/bd25a012cfe5bee46832f8b901b32290d6a76dc8#path:packages/asset-fingerprint': {}
+
   '@antora-supplemental/brand-placeholder@https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/67b6c8d768b5ed1d5360cf6452c60f2f608ed1aa#path:packages/brand-placeholder': {}
 
   '@antora-supplemental/color-scheme@https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/ecf83e69ec7bfac298bc01f8c388ac7acc1c9481#path:packages/color-scheme': {}
 
-  '@antora-supplemental/contrast-check@https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/a430a52dfdf48450fe6d62a8bb7d8dbb6d664680#path:packages/contrast-check':
+  '@antora-supplemental/contrast-check@https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/31ec0462c00fe7c505720e4dcadbe6ad4518df0b#path:packages/contrast-check':
     dependencies:
       axe-core: 4.14.0
       playwright-core: 1.64.1
+    optionalDependencies:
+      json5: 2.2.3
+      yaml: 2.9.1
 
   '@antora-supplemental/light-dark-mode@https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/ad8107b19fce482d7ae7197700e443329b587f56#path:packages/light-dark-mode':
     dependencies:
       '@antora-supplemental/color-scheme': https://codeload.github.com/antora-supplemental/antora-ui-chassis/tar.gz/ecf83e69ec7bfac298bc01f8c388ac7acc1c9481#path:packages/color-scheme
 
-  '@antora-supplemental/valentus-layout@https://codeload.github.com/antora-supplemental/valentus-theme/tar.gz/8d38e3caadfdf979e28c3bd0bccf3b916da79a74#path:packages/valentus-layout': {}
+  '@antora-supplemental/valentus-layout@https://codeload.github.com/antora-supplemental/valentus-theme/tar.gz/c1f54f3a307f9d4c3a1c08d6fe4a12bc1f69971f#path:packages/valentus-layout': {}
 
   '@antora/asciidoc-loader@3.2.1':
     dependencies:
@@ -1687,6 +1706,9 @@ snapshots:
   wrappy@1.0.2: {}
 
   xdg-basedir@3.0.0: {}
+
+  yaml@2.9.1:
+    optional: true
 
   yargs-parser@20.2.9: {}
 
