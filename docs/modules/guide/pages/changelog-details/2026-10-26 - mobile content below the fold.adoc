@@ -1,0 +1,13 @@
+= 2026-10-26
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Mobile content no longer starts below the fold
+
+On viewports narrower than 1024px (for example 390x844), `main.article` started at about 827px, so a visitor saw only a blank area on load.
+
+Valentus Layout makes `.nav-container` `position: fixed; visibility: hidden` on narrow screens, so the nav drawer is out of the flow until opened. Its `.nav` is `calc(100vh - mast - 2.5rem)` tall. `skittles-chrome.css` set `.nav-container { position: relative; }` with no media query (to anchor the rainbow divider `::after`). That put the invisible, almost full-height drawer back into the flow above the article.
+
+The rule is removed. On desktop Valentus already makes `.nav-container` sticky, which anchors the divider. `test/layout.test.js` now fails if the overlay sets `position` on `.nav-container`.
+
+After the fix, `main` starts at 132px (390x844) and 113px (1366x768), in light and dark.

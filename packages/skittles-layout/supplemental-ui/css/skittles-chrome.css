@@ -40,7 +40,10 @@ body { padding-bottom: var(--skittles-strip); }
   background: var(--sk-rainbow-v, GrayText);
   pointer-events: none;
 }
-.nav-container { position: relative; }
+/* No position on .nav-container here: Valentus makes it sticky (the ::after anchor)
+   on desktop and position: fixed + hidden below 1024px. Forcing relative put the
+   hidden full-height nav drawer into flow on mobile and pushed the article below
+   the fold. */
 
 /* 3. Rainbow wire guide lines in the right-hand TOC tree: ONE continuous rainbow
    spans the whole tree. Every rail and stub paints the same gradient sized to the

@@ -41,3 +41,8 @@ test('brand overlay overrides the placeholder partial with the --sk-dominant ski
   assert.match(mark, /var\(--sk-outline/)
   assert.ok(require('../docs/brand/lib/brand-overlay.js').PLACEHOLDER_STEMS.includes('valentus-logo-placeholder'))
 })
+
+test('overlay never repositions .nav-container (mobile drawer must stay fixed, out of flow)', () => {
+  const body = chrome.replace(/\/\*[\s\S]*?\*\//g, '')
+  assert.doesNotMatch(body, /\.nav-container\s*(,[^{]*)?\{[^}]*\bposition\s*:/)
+})

@@ -1,6 +1,13 @@
 = Changelog
 :toclevels: 3
 
+== 2026-10-26
+
+=== Mobile content no longer starts below the fold
+
+* Below 1024px the page content started under a blank screen-tall gap. The Skittles overlay set `.nav-container { position: relative }`, which pulled Valentus's hidden fixed nav drawer into the page flow. The rule is gone; a test now guards against it.
+* xref:changelog-details/2026-10-26 - mobile content below the fold.adoc[Details]
+
 == 2026-10-25
 
 === Initial Skittles theme v0.1.0
