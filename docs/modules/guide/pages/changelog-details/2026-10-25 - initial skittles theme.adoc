@@ -1,0 +1,23 @@
+= 2026-10-25
+:hide-page:
+:navtree-parent: changelog.adoc
+
+== Initial Skittles theme v0.1.0
+
+Skittles splits into two parts. The layout is geometry only: the strips, divider, TOC wires, border widths and motion. The paint is color only: every `--sk-*` token, including the rainbow gradients.
+The paint generator (`scripts/build-schemes.mjs`) derives each scheme from one dominant flavor color. It solves the ink, muted ink and link colors against the canvas, elevated and panel surfaces until each passes its threshold. The thresholds include headroom for the tinted admonition backgrounds.
+
+Scheme slots:
+
+[cols="1,1,1"]
+|===
+|Scheme |Slot |Selector
+
+|`light` (Strawberry light) |light (built-in) |`:root`
+|`dark` (Grape dark) |dark (built-in) |`html.dark-theme`
+|`*light` extras |light candidate |`html[data-scheme=id]`
+|`*dark` extras |dark candidate |`html.dark-theme[data-scheme=id]`
+|`grapesoda` |none (turns automation off) |both
+|===
+
+The strips, divider and wires are CSS pseudo-elements, so screen readers ignore them. Animation is removed under `prefers-reduced-motion`. Printing hides the strips.

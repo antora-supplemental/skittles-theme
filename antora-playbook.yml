@@ -1,0 +1,55 @@
+# Skittles demo site: Default UI + Valentus Layout (dependency) + Skittles Layout
+# overlay + Skittles Paint, the same layering as the release bundle.
+site:
+  title: Skittles Theme
+  url: https://antora-supplemental.github.io/skittles-theme
+  start_page: skittles-theme:guide:index.adoc
+  keys:
+    dark_mode_navbar: light
+
+content:
+  sources:
+    - url: .
+      branches: HEAD
+      start_path: docs
+    - url: https://github.com/antora-supplemental/demo-data.git
+      tags: [v0.3.5]
+      branches: []
+      start_path: docs/demo-pages
+
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  # Valentus Layout, reused unchanged as a dependency (pinned to valentus-theme v4.1.0)
+  supplemental_files: ./node_modules/@antora-supplemental/valentus-layout/supplemental-ui
+
+output:
+  dir: ./build/site
+
+runtime:
+  fetch: true
+
+antora:
+  extensions:
+    # Skittles brand overlay (demo/docs only; not in the shipped bundle)
+    - require: ./docs/brand/lib/brand-overlay.js
+    - require: "@antora-supplemental/light-dark-mode"
+      toggle: placed
+      color_scheme:
+        # light = Strawberry (light), dark = Grape (dark); 11 schemes, so the
+        # picker (color-schemes.html) and its footer link appear automatically.
+        slots: { light: light, dark: dark }
+        slot_policy: declared
+        picker: auto
+    - require: ./packages/skittles-layout/lib/index.js
+    - require: ./paint/lib/index.js
+    - require: "@antora/lunr-extension"
+      index_latest_only: true
+
+asciidoc:
+  extensions:
+    - "@asciidoctor/tabs"
+  attributes:
+    source-highlighter: highlight.js
+    icons: font

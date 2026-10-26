@@ -1,0 +1,7 @@
+= Accessibility
+
+* Body text 4.5:1 or better, boundaries (borders, focus, icons) 3:1 or better, against every surface of every scheme. The generator solves these; axe checks them (`pnpm test:a11y`).
+* Strips, divider and wires are CSS pseudo-elements: no DOM nodes, nothing announced.
+* Links are underlined, so they do not rely on color.
+* `prefers-reduced-motion: reduce` removes all transitions and animations.
+* Strips and divider are hidden when printing.

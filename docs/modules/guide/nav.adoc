@@ -1,0 +1,7 @@
+* xref:index.adoc[Skittles Theme]
+** xref:installation.adoc[Installation]
+** xref:schemes.adoc[Color schemes]
+** xref:architecture.adoc[Layout and paint]
+** xref:accessibility.adoc[Accessibility]
+** xref:header-logo.adoc[Header logo]
+** xref:changelog.adoc[Changelog]

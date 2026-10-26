@@ -1,0 +1,16 @@
+= Header logo
+
+The Skittles bundle ships no logo files.
+Without `site.keys.header_logo` the header shows the generic placeholder from the layout.
+// TODO(chassis-placeholder): the placeholder is moving to a shared antora-ui-chassis package.
+
+Set your own logo:
+
+[source,yaml]
+----
+site:
+  keys:
+    header_logo: my-logo.svg   # shipped under img/ via your supplemental files
+----
+
+This site's skittle mark is a demo brand overlay (`docs/brand`): an inline SVG filled with `var(--sk-dominant)`, so it takes the color of each scheme.

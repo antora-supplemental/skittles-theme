@@ -1,0 +1,34 @@
+= Installation
+
+== Prebuilt bundle
+
+Point `ui.bundle.url` at a Skittles release `ui-bundle.zip` and add the color-scheme runtime:
+
+[source,yaml]
+----
+ui:
+  bundle:
+    url: https://github.com/antora-supplemental/skittles-theme/releases/download/v0.1.0/ui-bundle.zip
+antora:
+  extensions:
+  - require: "@antora-supplemental/light-dark-mode"   # pin light-dark-mode-v0.1.2
+----
+
+The bundle already contains Default UI, Valentus Layout, the Skittles chrome overlay and the baked paint.
+
+== Layered build
+
+Use the Default UI bundle, Valentus Layout as `ui.supplemental_files`, and the two Skittles extensions (see this repository's `antora-playbook.yml`):
+
+[source,yaml]
+----
+ui:
+  supplemental_files: ./node_modules/@antora-supplemental/valentus-layout/supplemental-ui
+antora:
+  extensions:
+  - require: "@antora-supplemental/light-dark-mode"
+  - require: skittles-theme/packages/skittles-layout/lib/index.js
+  - require: skittles-theme/paint/lib/index.js
+----
+
+The paint works on the plain Default UI too; without the layout overlay you lose the strips, divider and wires.

@@ -1,0 +1,23 @@
+= Layout and paint
+
+[cols="1,2,2"]
+|===
+|Layer |Package |Owns
+
+|Base |Antora Default UI |page templates, site.css
+|Layout |Valentus Layout 4.1.0 (dependency, unchanged) |header, mast, nav/article/TOC grid, toolbars, paint slot
+|Layout overlay |`packages/skittles-layout` |strip height and placement, divider width, TOC wire geometry, border widths, reduced motion
+|Paint |`paint/` (Skittles Paint) |all colors: per-scheme `--sk-*` tokens, rainbow stops and gradients, `--cs-*` mapping, Default UI color rules
+|Brand (demo only) |`docs/brand` |the skittle mark
+|===
+
+== Why reuse Valentus Layout
+
+Skittles changes how the site looks, not how it is laid out.
+Taking Valentus Layout as a pinned dependency keeps every layout fix upstream, and the overlay stays one short stylesheet.
+Copying the layout would fork about 4,000 lines of chrome for no design gain.
+
+== Token rules
+
+The overlay draws rainbow strips with `var(--sk-rainbow)`, the divider with `var(--sk-rainbow-v)` and the TOC wires with `var(--sk-rainbow-smooth)` and `var(--sk-border)`.
+It falls back to `GrayText` under a paint without Skittles tokens.

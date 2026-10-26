@@ -1,0 +1,46 @@
+= Skittles Theme
+:description: A high-vibrance, high-contrast Antora theme with eleven Skittles color schemes.
+
+Skittles is an Antora UI theme built on xref:architecture.adoc[Valentus Layout] with loud, saturated color and strict contrast.
+It has a light and a dark scheme for each classic flavor (Strawberry, Orange, Lemon, Green Apple, Grape) plus *Grape Soda*, a bright purple special scheme.
+Open the color scheme picker from the page footer to try them all.
+
+== What you get
+
+* Rainbow strips across the top and bottom of every page.
+* A rainbow divider between the navigation tree and the content.
+* Rainbow wire guide lines in the "On this page" tree.
+* Dominant-colored, 3:1 boundaries on inputs, buttons, code, tables and admonitions.
+* Links in a contrasting hue, always underlined.
+
+== Sample content
+
+NOTE: Notes, tips and warnings keep vivid, readable marks in every scheme.
+
+TIP: Pick *Grape Soda* to leave light/dark automation; pick any other scheme to stay in it.
+
+WARNING: Sugar rush ahead.
+
+[source,js]
+----
+// Syntax colors stay bright on a near-black panel
+const flavors = ['strawberry', 'orange', 'lemon', 'green', 'grape']
+export function taste (n) { return flavors[n % flavors.length] }
+----
+
+[cols="1,1,2"]
+|===
+|Flavor |Hue |Schemes
+
+|Strawberry |350 |`light`, `strawberrydark`
+|Orange |26 |`orangelight`, `orangedark`
+|Lemon |50 |`lemonlight`, `lemondark`
+|Green Apple |128 |`greenlight`, `greendark`
+|Grape |280 |`grapelight`, `dark`
+|===
+
+[tabs]
+====
+pnpm:: `pnpm add -D github:antora-supplemental/skittles-theme`
+npm:: `npm i -D github:antora-supplemental/skittles-theme`
+====

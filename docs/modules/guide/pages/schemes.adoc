@@ -1,0 +1,36 @@
+= Color schemes
+
+Skittles Paint declares eleven schemes in one `@color-schemes` manifest (color-scheme 0.4.0).
+
+[cols="2,1,1,2"]
+|===
+|Scheme |Id |Slot |Selector
+
+|Strawberry (light) |`light` |light (default) |`:root`
+|Strawberry (dark) |`strawberrydark` |dark |`html.dark-theme[data-scheme]`
+|Orange (light) / (dark) |`orangelight` / `orangedark` |light / dark |
+|Lemon (light) / (dark) |`lemonlight` / `lemondark` |light / dark |
+|Green Apple (light) / (dark) |`greenlight` / `greendark` |light / dark |
+|Grape (light) |`grapelight` |light |`html[data-scheme]`
+|Grape (dark) |`dark` |dark (default) |`html.dark-theme`
+|Grape Soda |`grapesoda` |none |`html[data-scheme="grapesoda"]`
+|===
+
+Light and dark schemes are slot candidates only: choosing one keeps light/dark automation running.
+Grape Soda has slot `none`; choosing it pins the bright purple page and turns automation off.
+
+Pick a default per slot in the playbook:
+
+[source,yaml]
+----
+- require: "@antora-supplemental/light-dark-mode"
+  color_scheme:
+    slots: { light: lemonlight, dark: greendark }
+----
+
+Preview a scheme with `?scheme=<id>` on any page.
+
+== Editing
+
+`paint/schemes.json5` is the source.
+`pnpm paint:schemes` solves each scheme's muted text, borders and links for contrast (4.5:1 text, 3:1 boundaries against every surface) and writes `paint/css/skittles-paint.css`.

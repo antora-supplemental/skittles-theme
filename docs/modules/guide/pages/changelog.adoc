@@ -1,0 +1,13 @@
+= Changelog
+:toclevels: 3
+
+== 2026-10-25
+
+=== Initial Skittles theme v0.1.0
+
+* Skittles Layout: a small overlay on Valentus Layout 4.1.0 adding rainbow strips at the top and bottom of the page, a rainbow nav/content divider, rainbow TOC wires, and 2px high-saturation control borders.
+* Skittles Paint: 11 color schemes in one `@color-schemes` manifest stylesheet. There is a light and a dark scheme for each of Strawberry, Orange, Lemon, Green and Grape, plus Grape Soda, a bright purple scheme with no slot.
+* Every light/dark scheme is only a slot candidate. Picking one fills that slot and leaves automatic light/dark switching on. Only Grape Soda (slot none) turns the automation off.
+* Generated contrast: text meets 4.5:1 and UI boundaries meet 3:1 on every surface. axe-core reports 0 contrast violations over 5 pages and 11 schemes.
+* The skittle header mark lives only in the docs brand overlay. The shipped bundles add no logo files.
+* xref:changelog-details/2026-10-25 - initial skittles theme.adoc[Details]
