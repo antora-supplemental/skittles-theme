@@ -6,12 +6,16 @@ import { chromium } from 'playwright-core'
 const BASE = process.env.BASE || 'http://localhost:8093'
 const OUT = process.env.OUT || 'build/screenshots'
 const schemes = JSON.parse(readFileSync(new URL('../paint/schemes.generated.json', import.meta.url), 'utf8'))
-const browser = await chromium.launch({ executablePath: process.env.CHROME || '/usr/bin/google-chrome' })
-async function open (s, path, vp = { width: 1400, height: 900 }) {
+// Published screenshots: no scrollbar and no reserved scrollbar-gutter, so content fills the full width.
+const NO_SCROLLBAR_CSS = 'html,body{scrollbar-width:none!important;scrollbar-gutter:auto!important}::-webkit-scrollbar{display:none!important;width:0!important;height:0!important}'
+const browser = await chromium.launch({ executablePath: process.env.CHROME || '/usr/bin/google-chrome', args: ['--hide-scrollbars'] })
+async function open (s, path, vp = { width: 1400, height: Number(process.env.HEIGHT) || 900 }) {
   const ctx = await browser.newContext({ colorScheme: s.base, viewport: vp, deviceScaleFactor: 1 })
   const page = await ctx.newPage()
   await page.goto(`${BASE}${path}?scheme=${s.id}`, { waitUntil: 'networkidle' })
   await page.waitForFunction(() => !document.documentElement.classList.contains('valentus-fouc-pending'))
+  await page.addStyleTag({ content: NO_SCROLLBAR_CSS })
+  await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))))
   return { ctx, page }
 }
 for (const s of schemes) {
