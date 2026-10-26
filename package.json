@@ -10,9 +10,23 @@
     "asciidoc",
     "color-scheme"
   ],
-  "homepage": "https://antora-supplemental.github.io/skittles-theme",
+  "homepage": "https://antora-supplemental.org/skittles-theme/",
   "license": "MIT",
   "author": "Ryan Johnson (https://github.com/AMDphreak)",
+  "engines": {
+    "antora": "^3.1.0"
+  },
+  "antoraRegistry": {
+    "layers": ["paint", "body-kit"],
+    "antora": "3",
+    "colorSchemes": "paint/css/skittles-paint.css",
+    "previews": [
+      { "url": "preview.png", "caption": "Strawberry (light)" },
+      { "url": "registry/previews/dark.png", "caption": "Grape (dark)" },
+      { "url": "registry/previews/orangedark.png", "caption": "Orange (dark)" },
+      { "url": "registry/previews/grapesoda.png", "caption": "Grape Soda (special)" }
+    ]
+  },
   "files": [
     "paint/**/*",
     "packages/skittles-layout/**/*"
